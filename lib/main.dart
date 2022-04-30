@@ -15,6 +15,23 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        inputDecorationTheme: const InputDecorationTheme(
+          hintStyle: TextStyle(
+            fontSize: 20,
+            color: Color.fromRGBO(44, 41, 41, 1),
+          ),
+          border: OutlineInputBorder(
+            borderSide: BorderSide.none,
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide.none,
+            //   borderRadius: BorderRadius.all(Radius.circular(90))
+          ),
+          labelStyle: TextStyle(
+          fontSize: 35,
+          decorationColor: Colors.red,
+          ),
+        ),
       ),
       home: const HiPage(),
       routes: {

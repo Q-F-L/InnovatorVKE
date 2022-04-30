@@ -11,10 +11,36 @@ class RegisterPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'Регистрация',
-              style: TextStyle(color: Colors.black, fontSize: 20),
-            ),
+            Form(
+                child: Container(
+                  height: 58,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width * 0.75,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(90),
+                    //border corner radius
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        //color of shadow
+                        spreadRadius: 0.2,
+                        //spread radius
+                        blurRadius: 9,
+                        // blur radius
+                        offset: Offset(0, 6), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: 'Имя',
+                    ),
+                    keyboardType: TextInputType.name,
+                  ),
+                )),
             
             Container(
               margin: EdgeInsets.only(top: 183),
