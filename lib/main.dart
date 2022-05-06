@@ -1,5 +1,6 @@
 import 'package:diplomka/hi_page.dart';
 import 'package:diplomka/register_page.dart';
+import 'package:diplomka/sms_page.dart';
 import 'package:flutter/material.dart';
 
 import 'login.dart';
@@ -35,11 +36,12 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const HiPage(),
+      home: const SmsPage(),
       routes: {
         '/hi_page': (context) => HiPage(),
         '/register_page': (context) => RegisterPage(),
         '/login_page': (context) => LoginPage(),
+        '/sms_page': (context) => SmsPage(),
       },
       // initialRoute: '/hi_page',
     );
