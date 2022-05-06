@@ -6,44 +6,116 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
+
+          // mainAxisAlignment: MainAxisAlignment.center,
+          padding: EdgeInsets.only(top: 120, left: MediaQuery.of(context).size.width * 0.07, right: MediaQuery.of(context).size.width * 0.07),
           children: <Widget>[
             Form(
-                child: Container(
-                  height: 58,
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width * 0.75,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(90),
-                    //border corner radius
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        //color of shadow
-                        spreadRadius: 0.2,
-                        //spread radius
-                        blurRadius: 9,
-                        // blur radius
-                        offset: Offset(0, 6), // changes position of shadow
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    Container(
+                      margin: EdgeInsets.only(bottom: 20),
+                    height: 58,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .height * 0.5,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(90),
+                      //border corner radius
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          //color of shadow
+                          spreadRadius: 0.2,
+                          //spread radius
+                          blurRadius: 9,
+                          // blur radius
+                          offset: Offset(0, 6), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: TextFormField(
+                        decoration: InputDecoration(
+                          hintText: 'Имя',
+                        ),
+                        keyboardType: TextInputType.name,
+                      ),
+                    ),
+                      Container(
+                        margin: EdgeInsets.symmetric(vertical: 20),
+
+                        height: 58,
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .height * 0.5,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(90),
+                          //border corner radius
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              //color of shadow
+                              spreadRadius: 0.2,
+                              //spread radius
+                              blurRadius: 9,
+                              // blur radius
+                              offset: Offset(0, 6), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            hintText: 'Почта',
+                          ),
+                          keyboardType: TextInputType.emailAddress,
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 20),
+
+                        height: 58,
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .height * 0.5,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(90),
+                          //border corner radius
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              //color of shadow
+                              spreadRadius: 0.2,
+                              //spread radius
+                              blurRadius: 9,
+                              // blur radius
+                              offset: Offset(0, 6), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            hintText: 'Пароль',
+                          ),
+                          keyboardType: TextInputType.visiblePassword,
+                          obscureText: true,
+                        ),
                       ),
                     ],
                   ),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      hintText: 'Имя',
-                    ),
-                    keyboardType: TextInputType.name,
-                  ),
-                )),
+                ),
             
             Container(
-              margin: EdgeInsets.only(top: 183),
+              width: MediaQuery.of(context).size.width * 0.7,
+              margin: EdgeInsets.only(top: 140),
               child: ElevatedButton(
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Color.fromRGBO(255, 255, 255, 1)),
@@ -59,21 +131,23 @@ class RegisterPage extends StatelessWidget {
                   // padding: MaterialStateProperty.all(EdgeInsets.all(20))
                 ),
                 onPressed: (){
-                  
+                  Navigator.pushNamed(context, '/login_page');
                 },
                 child: Text(
                   'Зарегистрироваться',
                   style: TextStyle(color: Colors.blue[900], fontSize: 20),
                 )
               ),
+            ),
+            TextButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, '/login_page');
+                },
+                child: Text('Войти в аккаунт', style: TextStyle(fontSize: 17, color: Colors.blue[800]),),
             )
           ],
         ),
       ),
     );
   }
-}
-
-class MyForm{
-  
 }

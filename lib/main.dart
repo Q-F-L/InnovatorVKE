@@ -2,6 +2,8 @@ import 'package:diplomka/hi_page.dart';
 import 'package:diplomka/register_page.dart';
 import 'package:flutter/material.dart';
 
+import 'login.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -37,6 +39,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/hi_page': (context) => HiPage(),
         '/register_page': (context) => RegisterPage(),
+        '/login_page': (context) => LoginPage(),
       },
       // initialRoute: '/hi_page',
     );
