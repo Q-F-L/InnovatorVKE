@@ -102,7 +102,7 @@ class LoginPage extends StatelessWidget {
                     // padding: MaterialStateProperty.all(EdgeInsets.all(20))
                   ),
                   onPressed: (){
-                    Navigator.pushNamed(context, '/login_page');
+                    Navigator.pushNamed(context, '/menu_page');
                   },
                   child: Text(
                     'Войти',

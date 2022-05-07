@@ -4,6 +4,7 @@ import 'package:diplomka/sms_page.dart';
 import 'package:flutter/material.dart';
 
 import 'login.dart';
+import 'menu_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,12 +37,13 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const SmsPage(),
+      home: const MenuPage(),
       routes: {
         '/hi_page': (context) => HiPage(),
         '/register_page': (context) => RegisterPage(),
         '/login_page': (context) => LoginPage(),
         '/sms_page': (context) => SmsPage(),
+        '/menu_page': (context) => MenuPage(),
       },
       // initialRoute: '/hi_page',
     );
