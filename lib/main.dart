@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'create_project_after.dart';
 import 'create_project_now.dart';
 import 'create_project_will_be.dart';
+import 'list_project_page.dart';
 import 'login.dart';
 import 'menu_page.dart';
 
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const UserPage(),
+      home: const ListProjectPage(),
       routes: {
         '/hi_page': (context) => HiPage(),
         '/register_page': (context) => RegisterPage(),
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
         '/create_after_page': (context) => CreateAfterPage(),
         '/create_will_be_page': (context) => CreateWillBePage(),
         '/user_page': (context) => UserPage(),
+        '/list_project_page': (context) => ListProjectPage(),
       },
       // initialRoute: '/hi_page',
     );
