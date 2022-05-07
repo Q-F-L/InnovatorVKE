@@ -4,6 +4,7 @@ import 'package:diplomka/sms_page.dart';
 import 'package:diplomka/create_project.dart';
 import 'package:flutter/material.dart';
 
+import 'create_project_after.dart';
 import 'create_project_now.dart';
 import 'login.dart';
 import 'menu_page.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const CreateNowPage(),
+      home: const CreateAfterPage(),
       routes: {
         '/hi_page': (context) => HiPage(),
         '/register_page': (context) => RegisterPage(),
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
         '/menu_page': (context) => MenuPage(),
         '/create_page': (context) => CreatePage(),
         '/create_now_page': (context) => CreateNowPage(),
+        '/create_after_page': (context) => CreateAfterPage(),
       },
       // initialRoute: '/hi_page',
     );
