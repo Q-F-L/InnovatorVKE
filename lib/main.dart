@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
         '/sms_page': (context) => SmsPage(),
         '/menu_page': (context) => MenuPage(),
         '/create_page': (context) => CreatePage(),
-        '/create_page': (context) => CreateNowPage(),
+        '/create_now_page': (context) => CreateNowPage(),
       },
       // initialRoute: '/hi_page',
     );

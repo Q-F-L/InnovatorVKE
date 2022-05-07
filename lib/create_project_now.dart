@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CreatePage extends StatelessWidget {
-  const CreatePage({Key? key}) : super(key: key);
+class CreateNowPage extends StatelessWidget {
+  const CreateNowPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,16 +25,16 @@ class CreatePage extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                      flex: 4,
-                      child: Text(
-                        'Создать',
-                        style: TextStyle(
+                    flex: 4,
+                    child: Text(
+                      'Создать',
+                      style: TextStyle(
                           fontSize: 36,
                           color: Color.fromRGBO(32, 86, 146, 1),
                           fontWeight: FontWeight.w400
-                        ),
-                        textAlign: TextAlign.center,
                       ),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                   Expanded(
                       flex: 1,
@@ -51,34 +51,19 @@ class CreatePage extends StatelessWidget {
                 child: ListView(
                   children: [
                     Text(
-                      'Расскажите о предложении',
+                      'Расскажите как сейчас',
                       style: TextStyle(
                         fontSize: 20,
                         color: Color.fromRGBO(32, 86, 146, 1),
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      'Виберите тему и название',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Color.fromRGBO(32, 86, 146, 1),
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
+
                     Form(
                       child: Column(
                         children: [
                           Container(
                             margin: EdgeInsets.only(top: 25),
-
-                            height: 58,
                             width: MediaQuery
                                 .of(context)
                                 .size
@@ -86,7 +71,7 @@ class CreatePage extends StatelessWidget {
                             decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(color: Color.fromRGBO(32, 86, 146, 1),width: 2),
-                              borderRadius: BorderRadius.circular(90),
+                              borderRadius: BorderRadius.circular(20),
                               //border corner radius
                               boxShadow: [
                                 BoxShadow(
@@ -101,47 +86,45 @@ class CreatePage extends StatelessWidget {
                               ],
                             ),
                             child: TextFormField(
+                              maxLines: 20,
+                              maxLength: 999,
+                              minLines: 10,
                               decoration: InputDecoration(
                                 hintText: 'Тема проекта',
                               ),
                             ),
                           ),
 
-                          Container(
-                            margin: EdgeInsets.only(top: 25),
+                          SizedBox(
+                            height: 20,
+                          ),
 
-                            height: 58,
-                            width: MediaQuery
-                                .of(context)
-                                .size
-                                .height * 0.5,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(color: Color.fromRGBO(32, 86, 146, 1),width: 2),
-                              borderRadius: BorderRadius.circular(90),
-                              //border corner radius
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  //color of shadow
-                                  spreadRadius: 0.2,
-                                  //spread radius
-                                  blurRadius: 9,
-                                  // blur radius
-                                  offset: Offset(0, 6), // changes position of shadow
-                                ),
-                              ],
+                          Text(
+                            'Добавьте фото или видео',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Color.fromRGBO(32, 86, 146, 1),
                             ),
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                hintText: 'Название',
-                              ),
-                            ),
+                            textAlign: TextAlign.center,
+                          ),
+
+                          SizedBox(
+                            height: 20,
+                          ),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Expanded(flex:1,child: Container()),
+                              Expanded(flex:1,child: Image.asset('assets/video.png')),
+                              Expanded(flex:1,child: Container()),
+                              Expanded(flex:1,child: Image.asset('assets/photo.png')),
+                              Expanded(flex:1,child: Container()),
+                            ],
                           ),
 
                           Container(
                             width: MediaQuery.of(context).size.width * 0.7,
-                            margin: EdgeInsets.only(top: 140),
                             child: ElevatedButton(
                                 style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(Color.fromRGBO(255, 255, 255, 1)),
@@ -157,7 +140,7 @@ class CreatePage extends StatelessWidget {
                                   // padding: MaterialStateProperty.all(EdgeInsets.all(20))
                                 ),
                                 onPressed: (){
-                                  Navigator.pushNamed(context, '/create_now_page');
+                                  Navigator.pushNamed(context, '/create_after_page');
                                 },
                                 child: Text(
                                   'Далее',
