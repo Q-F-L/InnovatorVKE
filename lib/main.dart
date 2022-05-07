@@ -1,8 +1,10 @@
 import 'package:diplomka/hi_page.dart';
 import 'package:diplomka/register_page.dart';
 import 'package:diplomka/sms_page.dart';
+import 'package:diplomka/create_project.dart';
 import 'package:flutter/material.dart';
 
+import 'create_project_now.dart';
 import 'login.dart';
 import 'menu_page.dart';
 
@@ -37,13 +39,15 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const MenuPage(),
+      home: const CreateNowPage(),
       routes: {
         '/hi_page': (context) => HiPage(),
         '/register_page': (context) => RegisterPage(),
         '/login_page': (context) => LoginPage(),
         '/sms_page': (context) => SmsPage(),
         '/menu_page': (context) => MenuPage(),
+        '/create_page': (context) => CreatePage(),
+        '/create_page': (context) => CreateNowPage(),
       },
       // initialRoute: '/hi_page',
     );

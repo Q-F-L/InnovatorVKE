@@ -20,7 +20,7 @@ class MenuPage extends StatelessWidget {
                         child: Container()
                     ),
                     Expanded(
-                      flex: 2,
+                      flex: 4,
                         child: Image.asset('assets/logo_text.png')
                     ),
                     Expanded(
@@ -57,7 +57,7 @@ class MenuPage extends StatelessWidget {
                             ]),
                         child: GestureDetector(
                           onTap: (){
-                            Navigator.pushNamed(context, '/login_page');
+                            Navigator.pushNamed(context, '/create_page');
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
