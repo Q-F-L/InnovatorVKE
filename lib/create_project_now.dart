@@ -90,7 +90,6 @@ class CreateNowPage extends StatelessWidget {
                               maxLength: 999,
                               minLines: 10,
                               decoration: InputDecoration(
-                                hintText: 'Тема проекта',
                               ),
                             ),
                           ),
