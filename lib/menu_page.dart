@@ -145,7 +145,7 @@ class MenuPage extends StatelessWidget {
                             ]),
                         child: GestureDetector(
                           onTap: (){
-                            Navigator.pushNamed(context, '/login_page');
+                            Navigator.pushNamed(context, '/user_page');
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
