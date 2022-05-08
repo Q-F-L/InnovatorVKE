@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CreatePage extends StatelessWidget {
@@ -8,10 +7,10 @@ class CreatePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.only(top: 30),
+        padding: const EdgeInsets.only(top: 30),
         child: Column(
           children: [
-            Expanded(
+           Expanded(
               flex: 1,
               child: Row(
                 children: [
@@ -24,7 +23,7 @@ class CreatePage extends StatelessWidget {
                         child: Image.asset('assets/arrow_back.png')
                     ),
                   ),
-                  Expanded(
+                  const Expanded(
                       flex: 4,
                       child: Text(
                         'Создать',
@@ -50,7 +49,7 @@ class CreatePage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.85,
                 child: ListView(
                   children: [
-                    Text(
+                    const Text(
                       'Расскажите о предложении',
                       style: TextStyle(
                         fontSize: 20,
@@ -58,10 +57,10 @@ class CreatePage extends StatelessWidget {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
-                    Text(
+                    const Text(
                       'Виберите тему и название',
                       style: TextStyle(
                         fontSize: 20,
@@ -69,7 +68,7 @@ class CreatePage extends StatelessWidget {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Form(

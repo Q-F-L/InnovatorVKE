@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class DetailProjectPage extends StatelessWidget {
   const DetailProjectPage({Key? key}) : super(key: key);

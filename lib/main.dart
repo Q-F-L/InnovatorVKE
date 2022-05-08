@@ -1,16 +1,17 @@
-import 'package:diplomka/hi_page.dart';
 import 'package:diplomka/register_page.dart';
 import 'package:diplomka/sms_page.dart';
-import 'package:diplomka/create_project.dart';
 import 'package:diplomka/user_page.dart';
 import 'package:flutter/material.dart';
 
+import 'create_project.dart';
 import 'create_project_after.dart';
 import 'create_project_now.dart';
 import 'create_project_will_be.dart';
 import 'detail_project_page.dart';
+import 'hi_page.dart';
 import 'list_project_page.dart';
 import 'login.dart';
+import 'massage_page.dart';
 import 'menu_page.dart';
 
 void main() {
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const DetailProjectPage(),
+      home: const MassagetPage(),
       routes: {
         '/hi_page': (context) => HiPage(),
         '/register_page': (context) => RegisterPage(),
@@ -58,6 +59,7 @@ class MyApp extends StatelessWidget {
         '/user_page': (context) => UserPage(),
         '/list_project_page': (context) => ListProjectPage(),
         '/detail_project_page': (context) => DetailProjectPage(),
+        '/message_page': (context) => MassagetPage(),
       },
       // initialRoute: '/hi_page',
     );
