@@ -52,7 +52,7 @@ class ListProjectPage extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: (){
-
+                        Navigator.pushNamed(context, '/detail_project_page');
                       },
                         child: Table(
                           border: TableBorder.all(),
