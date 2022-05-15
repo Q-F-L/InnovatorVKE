@@ -2,6 +2,7 @@ import 'package:diplomka/register_page.dart';
 import 'package:diplomka/sms_page.dart';
 import 'package:diplomka/user_page.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 import 'create_project.dart';
 import 'create_project_after.dart';
@@ -15,6 +16,7 @@ import 'massage_page.dart';
 import 'menu_page.dart';
 
 void main() {
+  loadData();
   runApp(const MyApp());
 }
 
@@ -45,7 +47,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const MassagetPage(),
+      home: ListProjectPage(),
       routes: {
         '/hi_page': (context) => HiPage(),
         '/register_page': (context) => RegisterPage(),
@@ -65,3 +67,24 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+Future<http.Response> getData() {
+  return http.get(Uri.parse('http://didpisdp.beget.tech/api/all_project'));
+}
+
+loadData() async {
+  String? b;
+  getData().then((response) => {
+    if(response.statusCode == 200)
+      b = response.body
+    else
+      b = '${response.statusCode}'
+  }).catchError((error){
+    b = error.toString();
+  });
+  return b?.length;
+}
+
+
+
+
+

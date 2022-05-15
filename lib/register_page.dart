@@ -1,7 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-class RegisterPage extends StatelessWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+class RegisterPage extends StatefulWidget {
+  @override
+  _RegisterPage createState() => _RegisterPage();
+}
+
+class _RegisterPage extends State<RegisterPage> {
+  TextEditingController email = TextEditingController();
+  TextEditingController name = TextEditingController();
+  TextEditingController password = TextEditingController();
+
+  @override
+  void disponse(){
+    email.dispose();
+    name.dispose();
+    password.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +56,7 @@ class RegisterPage extends StatelessWidget {
                       ],
                     ),
                     child: TextFormField(
+                      controller: name,
                         decoration: InputDecoration(
                           hintText: 'Имя',
                         ),
@@ -71,6 +88,7 @@ class RegisterPage extends StatelessWidget {
                           ],
                         ),
                         child: TextFormField(
+                          controller: email,
                           decoration: InputDecoration(
                             hintText: 'Почта',
                           ),
@@ -102,6 +120,7 @@ class RegisterPage extends StatelessWidget {
                           ],
                         ),
                         child: TextFormField(
+                          controller: password,
                           decoration: InputDecoration(
                             hintText: 'Пароль',
                           ),
@@ -112,7 +131,7 @@ class RegisterPage extends StatelessWidget {
                     ],
                   ),
                 ),
-            
+
             Container(
               width: MediaQuery.of(context).size.width * 0.7,
               margin: EdgeInsets.only(top: 140),
@@ -131,7 +150,7 @@ class RegisterPage extends StatelessWidget {
                   // padding: MaterialStateProperty.all(EdgeInsets.all(20))
                 ),
                 onPressed: (){
-                  Navigator.pushNamed(context, '/login_page');
+                    _submitForm(name.text, email.text, password.text);
                 },
                 child: Text(
                   'Зарегистрироваться',
@@ -150,4 +169,35 @@ class RegisterPage extends StatelessWidget {
       ),
     );
   }
+
+  void _submitForm(String name,String email,String password) {
+    print('name = ${name} ; email = ${email} ; password = ${password}');
+    if(name.isNotEmpty && email.isNotEmpty && password.isNotEmpty){
+      loadData(name, email, password);
+    }
+  }
+}
+
+Future<http.Response> Register(email, name, password) {
+  return http.post(
+      Uri.parse('http://didpisdp.beget.tech/api/register'),
+      body: {
+        "email": email,
+        "name": name,
+        'password': password,
+      },
+      headers: {'Accept':'application/json'}
+  );
+}
+
+void loadData(email, name, password) async {
+  Register(email, name, password).then((response) => {
+    if(response.statusCode == 200)
+      print(response.body)
+    else {
+      print(response.statusCode)
+    }
+  }).catchError((error){
+    debugPrint(error.toString());
+  });
 }

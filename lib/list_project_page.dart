@@ -1,7 +1,18 @@
+import 'package:diplomka/ProjectConvertJSON.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-class ListProjectPage extends StatelessWidget {
-  const ListProjectPage({Key? key}) : super(key: key);
+class ListProjectPage extends StatefulWidget{
+  _ListProjectPage createState() => _ListProjectPage();
+}
+
+class _ListProjectPage extends State<ListProjectPage> {
+  late Future<ProjectsList>? projectList;
+
+  void initState() {
+    super.initState();
+    projectList = getProjectList();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,71 +58,82 @@ class ListProjectPage extends StatelessWidget {
               flex: 5,
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.95,
-                child: ListView(
-                  children: [
-                    GestureDetector(
-                      onTap: (){
-                        Navigator.pushNamed(context, '/detail_project_page');
-                      },
-                        child: Table(
-                          border: TableBorder.all(),
-                          columnWidths: const <int, TableColumnWidth>{
-                            0: FixedColumnWidth(100),
-                            1: FlexColumnWidth(),
-                            2: FlexColumnWidth(2),
-                          },
-                          defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                          children: <TableRow>[
-                            TableRow(
-                              decoration: const BoxDecoration(
+                child: FutureBuilder<ProjectsList>(
+                  future: projectList,
+                  builder: (context, snapshot) {
+                    if(snapshot.hasData){
+                      return ListView.builder(
+                          itemCount: snapshot.data?.projects.length,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: (){
+                                Navigator.pushNamed(context, '/detail_project_page');
+                              },
+                              child: Table(
+                                border: TableBorder.all(),
+                                columnWidths: const <int, TableColumnWidth>{
+                                  0: FixedColumnWidth(100),
+                                  1: FlexColumnWidth(),
+                                  2: FlexColumnWidth(2),
+                                },
+                                defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                                children: <TableRow>[
+                                  TableRow(
+                                    decoration: const BoxDecoration(
+                                    ),
+                                    children: <Widget>[
+                                      Image.asset('assets/image_p.png'),
+                                      Container(
+                                        height: 32,
+                                      ),
+                                      Column(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          Text(
+                                            '${snapshot.data?.projects[index].title}',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                color: Color.fromRGBO(32, 86, 146, 1),
+                                                fontWeight: FontWeight.w400
+                                            ),
+                                            textAlign: TextAlign.end,
+                                          ),
+                                          SizedBox(
+                                            height: 15,
+                                          ),
+                                          Text(
+                                            '${snapshot.data?.projects[index].user_id}',
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                color: Color.fromRGBO(114, 114, 114, 1.0),
+                                                fontWeight: FontWeight.w400
+                                            ),
+                                            textAlign: TextAlign.end,
+                                          ),
+                                          Text(
+                                            '${snapshot.data?.projects[index].topic}',
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                color: Color.fromRGBO(32, 86, 146, 1),
+                                                fontWeight: FontWeight.w400
+                                            ),
+                                            textAlign: TextAlign.end,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
-                              children: <Widget>[
-                                Image.asset('assets/image_p.png'),
-                                Container(
-                                  height: 32,
-                                ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      'Название проекта',
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          color: Color.fromRGBO(32, 86, 146, 1),
-                                          fontWeight: FontWeight.w400
-                                      ),
-                                      textAlign: TextAlign.end,
-                                    ),
-                                    SizedBox(
-                                      height: 15,
-                                    ),
-                                    Text(
-                                      'Автор',
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          color: Color.fromRGBO(114, 114, 114, 1.0),
-                                          fontWeight: FontWeight.w400
-                                      ),
-                                      textAlign: TextAlign.end,
-                                    ),
-                                    Text(
-                                      'Тема проекта',
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          color: Color.fromRGBO(32, 86, 146, 1),
-                                          fontWeight: FontWeight.w400
-                                      ),
-                                      textAlign: TextAlign.end,
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                    )
-                  ],
-                ),
+                            );
+                          }
+                      );
+                    } else if(snapshot.hasError) {
+                      return Text('Error');
+                    }
+                    return Text('Empty');
+                  },
+                )
               ),
             )
           ],

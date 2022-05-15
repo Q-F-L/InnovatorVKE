@@ -1,7 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPage createState() => _LoginPage();
+}
+
+class _LoginPage extends State<LoginPage> {
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+
+  @override
+  void disponse(){
+    email.dispose();
+    password.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +55,7 @@ class LoginPage extends StatelessWidget {
                         ],
                       ),
                       child: TextFormField(
+                        controller: email,
                         decoration: InputDecoration(
                           hintText: 'Почта',
                         ),
@@ -72,6 +87,7 @@ class LoginPage extends StatelessWidget {
                         ],
                       ),
                       child: TextFormField(
+                        controller: password,
                         decoration: InputDecoration(
                           hintText: 'Пароль',
                         ),
@@ -102,7 +118,7 @@ class LoginPage extends StatelessWidget {
                     // padding: MaterialStateProperty.all(EdgeInsets.all(20))
                   ),
                   onPressed: (){
-                    Navigator.pushNamed(context, '/menu_page');
+                    loadData(email.text, password.text);
                   },
                   child: Text(
                     'Войти',
@@ -121,4 +137,27 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<http.Response> Login(email, password) {
+  return http.post(
+      Uri.parse('http://didpisdp.beget.tech/api/login'),
+      body: {
+        "email": email,
+        'password': password,
+      },
+      headers: {'Accept':'application/json'}
+  );
+}
+
+void loadData(email,password) async {
+  Login(email, password).then((response) => {
+    if(response.statusCode == 200)
+      print(response.body)
+    else {
+      print(response.statusCode)
+    }
+  }).catchError((error){
+    debugPrint(error.toString());
+  });
 }
