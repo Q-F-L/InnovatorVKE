@@ -19,7 +19,7 @@ class _DetailProjectPage extends State<DetailProjectPage> {
   @override
   Widget build(BuildContext context) {
     RouteSettings settings = ModalRoute.of(context)!.settings;
-    project = settings.arguments<Project>;
+    project = settings.arguments as Project;
     return Scaffold(
       body: Container(
         padding: EdgeInsets.only(top: 30),

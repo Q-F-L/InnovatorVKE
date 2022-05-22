@@ -16,7 +16,6 @@ import 'massage_page.dart';
 import 'menu_page.dart';
 
 void main() {
-  loadData();
   runApp(const MyApp());
 }
 
@@ -47,7 +46,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: ListProjectPage(),
+      home: RegisterPage(),
       routes: {
         '/hi_page': (context) => HiPage(),
         '/register_page': (context) => RegisterPage(),
