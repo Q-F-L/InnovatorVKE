@@ -40,10 +40,17 @@ class _RegisterPage extends State<RegisterPage> {
                     margin: EdgeInsets.symmetric(vertical: 20),
                     width: MediaQuery.of(context).size.height * 0.5,
                     child: TextFormField(
-                      validator: (value) =>
-                          value!.isEmpty ? 'Введите Ваше имя' : null,
+                      validator: (value) => _validatorName(value),
                       controller: name,
                       decoration: InputDecoration(
+                        focusedErrorBorder:  OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(90.0)),
+                          borderSide: BorderSide(
+                            color: Color.fromARGB(255, 153, 0, 0),
+                            width: 1.5,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(90.0)),
@@ -80,10 +87,17 @@ class _RegisterPage extends State<RegisterPage> {
                     margin: EdgeInsets.symmetric(vertical: 20),
                     width: MediaQuery.of(context).size.height * 0.5,
                     child: TextFormField(
-                      validator: (value) =>
-                          value!.isEmpty ? 'Введите Вашу почту' : null,
+                      validator: (value) => _validatorEmail(value),
                       controller: email,
                       decoration: InputDecoration(
+                        focusedErrorBorder:  OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(90.0)),
+                          borderSide: BorderSide(
+                            color: Color.fromARGB(255, 153, 0, 0),
+                            width: 1.5,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(90.0)),
@@ -121,10 +135,17 @@ class _RegisterPage extends State<RegisterPage> {
                     width: MediaQuery.of(context).size.height * 0.5,
                     child: TextFormField(
                       obscureText: true,
-                      validator: (value) =>
-                          value!.isEmpty ? 'Введите Ваш пароль' : null,
+                      validator: (value) => _validatorPassword(value),
                       controller: password,
                       decoration: const InputDecoration(
+                        focusedErrorBorder:  OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(90.0)),
+                          borderSide: BorderSide(
+                            color: Color.fromARGB(255, 153, 0, 0),
+                            width: 1.5,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(90.0)),
                           borderSide: BorderSide(
@@ -174,8 +195,7 @@ class _RegisterPage extends State<RegisterPage> {
                           // padding: MaterialStateProperty.all(EdgeInsets.all(20))
                         ),
                         onPressed: () {
-                          print(_validator());
-                          // _submitForm(name.text, email.text, password.text);
+                          _validator();
                         },
                         child: Text(
                           'Зарегистрироваться',
@@ -201,29 +221,46 @@ class _RegisterPage extends State<RegisterPage> {
     );
   }
 
-  String _validator() {
+  void _validator() {
     if (_formKey.currentState!.validate()) {
-      print('register');
+      print('name = ${name.text} ; email = ${email.text} ; password = ${password.text}');
+      loadData(name.text, email.text, password.text);
     }
-    return '1';
   }
 
-  // void _submitForm(String name, String email, String password) {
-  //   print('name = ${name} ; email = ${email} ; password = ${password}');
-  //   if (name.isEmpty) {
-  //     if (email.isEmpty) {
-  //       if (password.isNotEmpty) {
-  //         loadData(name, email, password);
-  //         return 'Вы успешно зарегистрировались';
-  //       } else
-  //         return 'Введите Ваше имя';
-  //     } else
-  //       return 'Введите Ваше имя';
-  //   } else
-  //     return 'Введите Ваше имя';
-  // }
+  String? _validatorName(String? value){
+    final _nameExp = RegExp(r'^[A-Za-z А-Яа-я]+$');
+    if(value!.isEmpty) {
+      return 'Введите Ваше имя';
+    } else if(!_nameExp.hasMatch(value)) {
+      return 'В поле ИМЯ можно вводить только БУКВЫ';
+    } else{
+      return null;
+    }
+  }
 
-  Future<http.Response> Register(email, name, password) {
+  String? _validatorEmail(String? value){
+    if(value!.isEmpty) {
+      return 'Введите Вашу почту';
+    } else if(!email.text.contains('@')) {
+      return 'Некоректно введен адрес';
+    } else{
+      return null;
+    }
+  }
+
+  String? _validatorPassword(String? value){
+    if(value!.isEmpty) {
+      return 'Введите Ваш пароль';
+    } else if(value.length < 8) {
+      return 'Пароль должен быть больше или равен 8 символов';
+    } else{
+      return null;
+    }
+  }
+
+  Future<http.Response> Register(name, email, password) {
+    print('name = ${name} ; email = ${email} ; password = ${password}');
     return http
         .post(Uri.parse('http://didpisdp.beget.tech/api/register'), body: {
       "email": email,

@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: RegisterPage(),
+      home: HiPage(),
       routes: {
         '/hi_page': (context) => HiPage(),
         '/register_page': (context) => RegisterPage(),
@@ -65,22 +65,6 @@ class MyApp extends StatelessWidget {
       // initialRoute: '/hi_page',
     );
   }
-}
-Future<http.Response> getData() {
-  return http.get(Uri.parse('http://didpisdp.beget.tech/api/all_project'));
-}
-
-loadData() async {
-  String? b;
-  getData().then((response) => {
-    if(response.statusCode == 200)
-      b = response.body
-    else
-      b = '${response.statusCode}'
-  }).catchError((error){
-    b = error.toString();
-  });
-  return b?.length;
 }
 
 

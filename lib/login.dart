@@ -1,5 +1,7 @@
+import 'package:diplomka/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -9,7 +11,10 @@ class LoginPage extends StatefulWidget {
 class _LoginPage extends State<LoginPage> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
-
+  final _formKey = GlobalKey<FormState>();
+  late Auth user;
+  late int user_id;
+  late String token;
   @override
   void disponse(){
     email.dispose();
@@ -22,79 +27,107 @@ class _LoginPage extends State<LoginPage> {
     return Scaffold(
       body: Center(
         child: ListView(
-
-          // mainAxisAlignment: MainAxisAlignment.center,
           padding: EdgeInsets.only(top: 120, left: MediaQuery.of(context).size.width * 0.07, right: MediaQuery.of(context).size.width * 0.07),
           children: <Widget>[
             Form(
+              key: _formKey,
               child: Center(
                 heightFactor: 1.5,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      height: 58,
-                      width: MediaQuery
-                          .of(context)
-                          .size
-                          .height * 0.5,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(90),
-                        //border corner radius
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            //color of shadow
-                            spreadRadius: 0.2,
-                            //spread radius
-                            blurRadius: 9,
-                            // blur radius
-                            offset: Offset(0, 6), // changes position of shadow
+                    margin: EdgeInsets.symmetric(vertical: 20),
+                    width: MediaQuery.of(context).size.height * 0.5,
+                    child: TextFormField(
+                      validator: (value) => _validatorEmail(value),
+                      controller: email,
+                      decoration: InputDecoration(
+                        focusedErrorBorder:  OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(90.0)),
+                          borderSide: BorderSide(
+                            color: Color.fromARGB(255, 153, 0, 0),
+                            width: 1.5,
+                            style: BorderStyle.solid,
                           ),
-                        ],
-                      ),
-                      child: TextFormField(
-                        controller: email,
-                        decoration: InputDecoration(
-                          hintText: 'Почта',
                         ),
-                        keyboardType: TextInputType.emailAddress,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(90.0)),
+                          borderSide: const BorderSide(
+                            color: const Color(0xFF000000),
+                            width: 1.5,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(90.0)),
+                          borderSide: const BorderSide(
+                            color: Color.fromARGB(255, 153, 0, 0),
+                            width: 1.5,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(90.0)),
+                          borderSide: const BorderSide(
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            width: 1.5,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                        hintText: 'Почта',
+                      ),
+                      keyboardType: TextInputType.name,
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 20),
+                    width: MediaQuery.of(context).size.height * 0.5,
+                    child: TextFormField(
+                      obscureText: true,
+                      validator: (value) => _validatorPassword(value),
+                      controller: password,
+                      decoration: const InputDecoration(
+                        focusedErrorBorder:  OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(90.0)),
+                          borderSide: BorderSide(
+                            color: Color.fromARGB(255, 153, 0, 0),
+                            width: 1.5,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(90.0)),
+                          borderSide: BorderSide(
+                            color:Color(0xFF000000),
+                            width: 1.5,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(90.0)),
+                          borderSide: BorderSide(
+                            color: Color.fromARGB(255, 153, 0, 0),
+                            width: 1.5,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(90.0)),
+                          borderSide: BorderSide(
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            width: 1.5,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                        hintText: 'Пароль',
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top: 25),
-
-                      height: 58,
-                      width: MediaQuery
-                          .of(context)
-                          .size
-                          .height * 0.5,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(90),
-                        //border corner radius
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            //color of shadow
-                            spreadRadius: 0.2,
-                            //spread radius
-                            blurRadius: 9,
-                            // blur radius
-                            offset: Offset(0, 6), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: TextFormField(
-                        controller: password,
-                        decoration: InputDecoration(
-                          hintText: 'Пароль',
-                        ),
-                        keyboardType: TextInputType.visiblePassword,
-                        obscureText: true,
-                      ),
-                    ),
+                  ),
                   ],
                 ),
               ),
@@ -118,7 +151,7 @@ class _LoginPage extends State<LoginPage> {
                     // padding: MaterialStateProperty.all(EdgeInsets.all(20))
                   ),
                   onPressed: (){
-                    loadData(email.text, password.text);
+                    _validator();
                   },
                   child: Text(
                     'Войти',
@@ -137,27 +170,50 @@ class _LoginPage extends State<LoginPage> {
       ),
     );
   }
-}
 
-Future<http.Response> Login(email, password) {
-  return http.post(
-      Uri.parse('http://didpisdp.beget.tech/api/login'),
-      body: {
-        "email": email,
-        'password': password,
-      },
-      headers: {'Accept':'application/json'}
-  );
-}
-
-void loadData(email,password) async {
-  Login(email, password).then((response) => {
-    if(response.statusCode == 200)
-      print(response.body)
-    else {
-      print(response.statusCode)
+  void _validator() {
+    if (_formKey.currentState!.validate()) {
+      loadData(email.text, password.text);
     }
-  }).catchError((error){
-    debugPrint(error.toString());
-  });
+  }
+
+  String? _validatorEmail(String? value){
+    if(value!.isEmpty) {
+      return 'Введите Вашу почту';
+    } else if(!email.text.contains('@')) {
+      return 'Некоректно введен адрес: adres@mail.ru';
+    } else{
+      return null;
+    }
+  }
+
+  String? _validatorPassword(String? value){
+    if(value!.isEmpty) {
+      return 'Введите Ваш пароль';
+    } else if(value.length < 8) {
+      return 'Пароль должен быть больше или равен 8 символов';
+    } else{
+      return null;
+    }
+  }
+
+  Future<Auth> loadData(email,password) async {
+    final response = await http.post(
+        Uri.parse('http://didpisdp.beget.tech/api/login'),
+        body: {
+          "email": email,
+          'password': password,
+        },
+        headers: {'Accept':'application/json'}
+    );
+    print(response.body);
+    if (response.statusCode == 200) {
+      user = Auth.fromJson(json.decode(response.body));
+      token = user.token;
+      user_id = user.user_id;
+      return user;
+    } else {
+      throw Exception('Error: ${response.reasonPhrase}');
+    }
+  }
 }
