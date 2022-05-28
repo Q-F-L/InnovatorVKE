@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auth.dart';
+part of 'AuthConvertJSON.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -8,7 +8,7 @@ part of 'auth.dart';
 
 Auth _$AuthFromJson(Map<String, dynamic> json) => Auth(
       message: json['message'] as String,
-      user_id: json['user_id'] as dynamic,
+      user_id: json['user_id'] as int,
       token: json['token'] as String,
     );
 

@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import '../global.dart' as global;
 import 'package:http/http.dart' as http;
 import 'package:json_annotation/json_annotation.dart';
 
@@ -26,17 +26,19 @@ class User {
 }
 
 Future<User> getUser(int user_id) async {
-  final url = 'http://didpisdp.beget.tech/api/search/101';
+  final url = 'http://didpisdp.beget.tech/api/search/${global.user_id}';
   final response = await http.get(
     Uri.parse(url),
     headers: {
       'Accept': 'application/json',
       'Authorization':
-          'Bearer j914OfilLzpzRRHbcp4wzF7u9sPuvxu4JZBMShVBSC14CFfbmHY1M4d6pKET'
+          'Bearer ${global.token}',
     },
   );
   
   if (response.statusCode == 200) {
+    print(global.token);
+    print(response);
     return User.fromJson(json.decode(response.body));
   } else {
     throw Exception('Error: ${response.reasonPhrase}');

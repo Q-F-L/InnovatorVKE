@@ -1,19 +1,18 @@
-import 'package:diplomka/register_page.dart';
-import 'package:diplomka/sms_page.dart';
-import 'package:diplomka/user_page.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
-import 'create_project.dart';
-import 'create_project_after.dart';
-import 'create_project_now.dart';
-import 'create_project_will_be.dart';
-import 'detail_project_page.dart';
-import 'hi_page.dart';
-import 'list_project_page.dart';
-import 'login.dart';
-import 'massage_page.dart';
-import 'menu_page.dart';
+import 'Pages/create_project.dart';
+import 'Pages/create_project_after.dart';
+import 'Pages/create_project_now.dart';
+import 'Pages/create_project_will_be.dart';
+import 'Pages/detail_project_page.dart';
+import 'Pages/hi_page.dart';
+import 'Pages/list_project_page.dart';
+import 'Pages/login.dart';
+import 'Pages/massage_page.dart';
+import 'Pages/menu_page.dart';
+import 'Pages/register_page.dart';
+import 'Pages/sms_page.dart';
+import 'Pages/user_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -62,7 +61,6 @@ class MyApp extends StatelessWidget {
         '/detail_project_page': (context) => DetailProjectPage(),
         '/message_page': (context) => MassagetPage(),
       },
-      // initialRoute: '/hi_page',
     );
   }
 }

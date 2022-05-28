@@ -1,8 +1,8 @@
-import 'package:diplomka/UserConvertJSON.dart';
-import 'package:diplomka/ProjectsConvertJSON.dart';
+import 'package:diplomka/Request/UserConvertJSON.dart';
+import 'package:diplomka/Request/ProjectsConvertJSON.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'global.dart' as global;
+import '../global.dart' as global;
 
 class DetailProjectPage extends StatefulWidget {
   const DetailProjectPage({Key? key}) : super(key: key);
@@ -339,14 +339,14 @@ class _DetailProjectPage extends State<DetailProjectPage> {
   
   Future getRating() async {
     final response = await http.post(
-        Uri.parse('http://didpisdp.beget.tech/api/login'),
-        body: {
-          "rating": _rating,
-        },
-        headers: {'Accept':'application/json'}
+        Uri.parse('http://didpisdp.beget.tech/api/rating/${global.id}/$_rating'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${global.token}',
+        }
     );
     if (response.statusCode == 200) {
-      
+      print(response.body);
     } else {
       throw Exception('Error: ${response.reasonPhrase}');
     }

@@ -1,6 +1,6 @@
-import 'package:diplomka/ProjectsConvertJSON.dart';
+import 'package:diplomka/Request/ProjectsConvertJSON.dart';
 import 'package:flutter/material.dart';
-import 'global.dart' as global;
+import '../global.dart' as global;
 
 class ListProjectPage extends StatefulWidget {
   _ListProjectPage createState() => _ListProjectPage();

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'auth.g.dart';
+part 'AuthConvertJSON.g.dart';
 
 @JsonSerializable()
 class Auth {

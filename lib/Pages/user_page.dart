@@ -1,5 +1,6 @@
-import 'package:diplomka/UserConvertJSON.dart';
+import 'package:diplomka/Request/UserConvertJSON.dart';
 import 'package:flutter/material.dart';
+import '../global.dart' as global;
 
 class UserPage extends StatefulWidget {
   _UserPage createState() => _UserPage();
@@ -56,6 +57,8 @@ class _UserPage extends State<UserPage> {
                 child: FutureBuilder<User>(
                   future: user,
                   builder: (context, snapshot) {
+                    print(global.user_id);
+                    print(snapshot.hasData);
                     if (snapshot.hasData) {
                       return ListView(
                         children: [
@@ -77,7 +80,7 @@ class _UserPage extends State<UserPage> {
                                   TableCellVerticalAlignment.bottom,
                               children: <TableRow>[
                                 TableRow(
-                                  children: <Widget>[
+                                  children: [
                                     Container(
                                       child: Text(
                                         'Оценок',
@@ -224,7 +227,7 @@ class _UserPage extends State<UserPage> {
                         ],
                       );
                     } else if (snapshot.hasError) {
-                      return Text('Error');
+                      return Text("$snapshot");
                     }
                     return Text('Empty');
                   },
@@ -236,8 +239,4 @@ class _UserPage extends State<UserPage> {
       ),
     );
   }
-
-  // Body() {
-  //   return ;
-  // }
 }
