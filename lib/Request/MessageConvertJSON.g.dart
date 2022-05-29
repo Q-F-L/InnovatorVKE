@@ -6,17 +6,17 @@ part of 'MessageConvertJSON.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-DiscussionList _$DiscussionListFromJson(Map<String, dynamic> json) =>
-    DiscussionList(
-      discussion: (json['discussion'] as List<dynamic>)
-          .map((e) => DiscussionList.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
+// DiscussionList _$DiscussionListFromJson(Map<String, dynamic> json) =>
+//     DiscussionList(
+//       discussion: (json['discussion'] as List<dynamic>)
+//           .map((e) => DiscussionList.fromJson(e as Map<String, dynamic>))
+//           .toList(),
+//     );
 
-Map<String, dynamic> _$DiscussionListToJson(DiscussionList instance) =>
-    <String, dynamic>{
-      'discussion': instance.discussion,
-    };
+// Map<String, dynamic> _$DiscussionListToJson(DiscussionList instance) =>
+//     <String, dynamic>{
+//       'discussion': instance.discussion,
+//     };
 
 Discussion _$DiscussionFromJson(Map<String, dynamic> json) => Discussion(
       id: json['id'] as int,
