@@ -68,16 +68,8 @@ class _ListProjectPage extends State<ListProjectPage> {
                                           snapshot.data!.projects[index].title;
                                       global.now_description= snapshot.data!
                                           .projects[index].now_description;
-                                      global.now_video= snapshot
-                                          .data!.projects[index].now_video;
-                                      global.now_photo= snapshot
-                                          .data!.projects[index].now_photo;
                                       global.need_description= snapshot.data!
                                           .projects[index].need_description;
-                                      global.need_video= snapshot
-                                          .data!.projects[index].need_video;
-                                      global.need_photo= snapshot
-                                          .data!.projects[index].need_photo;
                                       global.will_description= snapshot.data!
                                           .projects[index].will_description;
                                       global.rating=
@@ -98,9 +90,6 @@ class _ListProjectPage extends State<ListProjectPage> {
                                 child: Table(
                                   border: TableBorder.all(),
                                   columnWidths: const <int, TableColumnWidth>{
-                                    0: FixedColumnWidth(100),
-                                    1: FlexColumnWidth(),
-                                    2: FlexColumnWidth(2),
                                   },
                                   defaultVerticalAlignment:
                                       TableCellVerticalAlignment.middle,
@@ -108,10 +97,6 @@ class _ListProjectPage extends State<ListProjectPage> {
                                     TableRow(
                                       decoration: const BoxDecoration(),
                                       children: <Widget>[
-                                        Image.asset('assets/image_p.png'),
-                                        Container(
-                                          height: 32,
-                                        ),
                                         Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.end,

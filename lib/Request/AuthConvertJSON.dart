@@ -9,8 +9,9 @@ class Auth {
   String message;
   int user_id;
   String token;
+  String type;
 
-  Auth({required this.message,required this.user_id,required this.token});
+  Auth({required this.message,required this.user_id,required this.token, required this.type});
 
   factory Auth.fromJson(Map<String, dynamic> json) => _$AuthFromJson(json);
 

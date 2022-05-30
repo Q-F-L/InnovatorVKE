@@ -1,6 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import '../Request/AuthConvertJSON.dart';
 import '../Request/MessageConvertJSON.dart';
+import '../Request/ProjectsConvertJSON.dart';
 import '../global.dart' as global;
+import 'package:http/http.dart' as http;
 
 class MassagetPage extends StatefulWidget {
   const MassagetPage({Key? key}) : super(key: key);
@@ -11,10 +16,13 @@ class MassagetPage extends StatefulWidget {
 
 class _MassagetPage extends State<MassagetPage> {
   late Future<DiscussionList>? discussion;
+  late TextEditingController _message;
+  final FocusNode _weightFocus = FocusNode();
 
   void initState() {
     super.initState();
     discussion = getDiscussionList();
+    _message = TextEditingController();
   }
 
   @override
@@ -66,7 +74,8 @@ class _MassagetPage extends State<MassagetPage> {
                             return ListView.builder(
                               itemCount: snapshot.data?.discussion.length,
                               itemBuilder: (BuildContext context, int index) {
-                                if (5 != snapshot.data?.discussion[index].user_id)
+                                if (5 !=
+                                    snapshot.data?.discussion[index].user_id)
                                   return Container(
                                     alignment: Alignment.bottomLeft,
                                     margin: EdgeInsets.only(bottom: 20),
@@ -179,26 +188,30 @@ class _MassagetPage extends State<MassagetPage> {
                     ),
                     Container(
                       height: 58,
-                      margin: EdgeInsets.only(bottom: 10),
+                      margin: const EdgeInsets.only(bottom: 10),
                       width: MediaQuery.of(context).size.height * 0.5,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(90),
-                        //border corner radius
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.withOpacity(0.5),
-                            //color of shadow
                             spreadRadius: 0.2,
-                            //spread radius
                             blurRadius: 9,
-                            // blur radius
-                            offset: Offset(0, 6), // changes position of shadow
+                            offset: Offset(0, 6),
                           ),
                         ],
                       ),
                       child: TextFormField(
-                        decoration: InputDecoration(
+                        controller: _message,
+                        focusNode: _weightFocus,
+                        textInputAction: TextInputAction.done,
+                        onFieldSubmitted: (_message) {
+                          _weightFocus.unfocus();
+                          createMessage(_message);
+                        },
+                        maxLength: 100,
+                        decoration: const InputDecoration(
                           hintText: "Ваше сообщение",
                         ),
                       ),
@@ -212,4 +225,27 @@ class _MassagetPage extends State<MassagetPage> {
       ),
     );
   }
+
+  void createMessage(String message) async {
+    final response = await http.post(
+        Uri.parse('http://didpisdp.beget.tech/api/create_message'),
+        body: {
+          "message": '$message',
+          'user_id': '${global.user_id}',
+          "discussion_id": "${global.discussion_id}"
+        },
+        headers: {
+          'Accept':'application/json',
+          'Authorization': 'Bearer ${global.token}',
+        }
+    );
+    
+    if (response.statusCode == 200) {
+      print('200');
+    } else {
+      print('error');
+    }
+  }
 }
+
+

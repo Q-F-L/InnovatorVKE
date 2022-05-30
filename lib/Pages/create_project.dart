@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
+import '../global.dart' as global;
 
-class CreatePage extends StatelessWidget {
+class CreatePage extends StatefulWidget {
   const CreatePage({Key? key}) : super(key: key);
+
+  @override
+  _CreatePage createState() => _CreatePage();
+}
+
+class _CreatePage extends State<CreatePage> {
+  late TextEditingController _topic;
+  late TextEditingController _title;
+
+  void initState() {
+    super.initState();
+    _topic = TextEditingController();
+    _title = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,6 +115,7 @@ class CreatePage extends StatelessWidget {
                               ],
                             ),
                             child: TextFormField(
+                              controller: _topic,
                               decoration: InputDecoration(
                                 hintText: 'Тема проекта',
                               ),
@@ -132,6 +148,7 @@ class CreatePage extends StatelessWidget {
                               ],
                             ),
                             child: TextFormField(
+                              controller: _title,
                               decoration: InputDecoration(
                                 hintText: 'Название',
                               ),
@@ -156,6 +173,10 @@ class CreatePage extends StatelessWidget {
                                   // padding: MaterialStateProperty.all(EdgeInsets.all(20))
                                 ),
                                 onPressed: (){
+                                  global.title = _title.text;
+                                  global.topic = _topic.text;
+                                  print(global.topic);
+                                  print(global.title);
                                   Navigator.pushNamed(context, '/create_now_page');
                                 },
                                 child: Text(

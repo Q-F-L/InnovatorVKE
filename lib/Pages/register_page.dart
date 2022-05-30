@@ -225,6 +225,7 @@ class _RegisterPage extends State<RegisterPage> {
     if (_formKey.currentState!.validate()) {
       print('name = ${name.text} ; email = ${email.text} ; password = ${password.text}');
       loadData(name.text, email.text, password.text);
+      Navigator.pushNamed(context, '/login_page');
     }
   }
 

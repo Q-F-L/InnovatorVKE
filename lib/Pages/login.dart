@@ -214,6 +214,8 @@ class _LoginPage extends State<LoginPage> {
       global.password = password;
       global.token = user.token;
       global.user_id = user.user_id;
+      global.type = user.type;
+      print(global.token);
       Navigator.pushNamed(context, '/menu_page');
       return user;
     } else {

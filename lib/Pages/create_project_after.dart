@@ -1,7 +1,21 @@
 import 'package:flutter/material.dart';
+import '../global.dart' as global;
 
-class CreateAfterPage extends StatelessWidget {
+
+class CreateAfterPage extends StatefulWidget {
   const CreateAfterPage({Key? key}) : super(key: key);
+
+  @override
+  _CreateAfterPage createState() => _CreateAfterPage();
+}
+
+class _CreateAfterPage extends State<CreateAfterPage> {
+  late TextEditingController _need_description;
+
+  void initState() {
+    super.initState();
+    _need_description = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +99,7 @@ class CreateAfterPage extends StatelessWidget {
                               ],
                             ),
                             child: TextFormField(
+                              controller: _need_description,
                               maxLines: 20,
                               maxLength: 999,
                               minLines: 10,
@@ -94,31 +109,7 @@ class CreateAfterPage extends StatelessWidget {
                           ),
 
                           SizedBox(
-                            height: 20,
-                          ),
-
-                          Text(
-                            'Добавьте фото или видео',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Color.fromRGBO(32, 86, 146, 1),
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-
-                          SizedBox(
-                            height: 20,
-                          ),
-
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(flex:1,child: Container()),
-                              Expanded(flex:1,child: Image.asset('assets/video.png')),
-                              Expanded(flex:1,child: Container()),
-                              Expanded(flex:1,child: Image.asset('assets/photo.png')),
-                              Expanded(flex:1,child: Container()),
-                            ],
+                            height: 50,
                           ),
 
                           Container(
@@ -138,6 +129,8 @@ class CreateAfterPage extends StatelessWidget {
                                   // padding: MaterialStateProperty.all(EdgeInsets.all(20))
                                 ),
                                 onPressed: (){
+                                  global.need_description = _need_description.text;
+                                  print(global.need_description);
                                   Navigator.pushNamed(context, '/create_will_be_page');
                                 },
                                 child: Text(

@@ -1,19 +1,16 @@
 library globals;
 
-String token = '';
+String token = 'unKyx81TqJAmP1tbKN5ksZ9Xa0CSSaf6xCEYYWbHC8szuaw5WXCVVhWtDk0N';
 String email = '';
 String password= '';
-int user_id = -1;
+int user_id = 118;
+String type = 'admin';
 
 int id = -1;
 String topic = '';
 String title = '';
 String now_description = '';
-String now_video = '';
-String now_photo = '';
 String need_description = '';
-String need_video = '';
-String need_photo = '';
 String will_description = '';
 String rating = '';
 String status = '';

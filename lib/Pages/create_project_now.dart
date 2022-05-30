@@ -1,7 +1,21 @@
 import 'package:flutter/material.dart';
+import '../global.dart' as global;
 
-class CreateNowPage extends StatelessWidget {
+
+class CreateNowPage extends StatefulWidget {
   const CreateNowPage({Key? key}) : super(key: key);
+
+  @override
+  _CreateNowPage createState() => _CreateNowPage();
+}
+
+class _CreateNowPage extends State<CreateNowPage> {
+  late TextEditingController _now_description;
+
+  void initState() {
+    super.initState();
+    _now_description = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +99,7 @@ class CreateNowPage extends StatelessWidget {
                               ],
                             ),
                             child: TextFormField(
+                              controller: _now_description,
                               maxLines: 20,
                               maxLength: 999,
                               minLines: 10,
@@ -94,32 +109,10 @@ class CreateNowPage extends StatelessWidget {
                           ),
 
                           SizedBox(
-                            height: 20,
+                            height: 50
                           ),
 
-                          Text(
-                            'Добавьте фото или видео',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Color.fromRGBO(32, 86, 146, 1),
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-
-                          SizedBox(
-                            height: 20,
-                          ),
-
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(flex:1,child: Container()),
-                              Expanded(flex:1,child: Image.asset('assets/video.png')),
-                              Expanded(flex:1,child: Container()),
-                              Expanded(flex:1,child: Image.asset('assets/photo.png')),
-                              Expanded(flex:1,child: Container()),
-                            ],
-                          ),
+                          
 
                           Container(
                             width: MediaQuery.of(context).size.width * 0.7,
@@ -138,6 +131,8 @@ class CreateNowPage extends StatelessWidget {
                                   // padding: MaterialStateProperty.all(EdgeInsets.all(20))
                                 ),
                                 onPressed: (){
+                                  global.now_description = _now_description.text;
+                                  print(global.now_description);
                                   Navigator.pushNamed(context, '/create_after_page');
                                 },
                                 child: Text(

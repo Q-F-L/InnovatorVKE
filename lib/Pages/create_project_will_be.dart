@@ -1,7 +1,21 @@
 import 'package:flutter/material.dart';
+import '../Request/ProjectsConvertJSON.dart';
+import '../global.dart' as global;
 
-class CreateWillBePage extends StatelessWidget {
+class CreateWillBePage extends StatefulWidget {
   const CreateWillBePage({Key? key}) : super(key: key);
+
+  @override
+  _CreateWillBePage createState() => _CreateWillBePage();
+}
+
+class _CreateWillBePage extends State<CreateWillBePage> {
+  late TextEditingController _will_description;
+
+  void initState() {
+    super.initState();
+    _will_description = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +99,7 @@ class CreateWillBePage extends StatelessWidget {
                               ],
                             ),
                             child: TextFormField(
+                              controller: _will_description,
                               maxLines: 20,
                               maxLength: 999,
                               minLines: 10,
@@ -114,7 +129,11 @@ class CreateWillBePage extends StatelessWidget {
                                   // padding: MaterialStateProperty.all(EdgeInsets.all(20))
                                 ),
                                 onPressed: (){
-                                  Navigator.pushNamed(context, '/create_will_be_page');
+                                  global.will_description = _will_description.text;
+                                  print(global.will_description);
+                                  print('object');
+                                  createProject();
+                                  Navigator.pushNamed(context, '/menu_page');
                                 },
                                 child: Text(
                                   'Готово',

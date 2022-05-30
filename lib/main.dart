@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: ListProjectPage(),
+      home: HiPage(),
       routes: {
         '/hi_page': (context) => HiPage(),
         '/register_page': (context) => RegisterPage(),

@@ -29,12 +29,12 @@ class Discussion {
   final String? updated_at;
 
   Discussion(
-      { this.id,
-       this.discussion_id,
-       this.user_id,
-       this.message,
-       this.created_at,
-       this.updated_at});
+      {this.id,
+      this.discussion_id,
+      this.user_id,
+      this.message,
+      this.created_at,
+      this.updated_at});
 
   factory Discussion.fromJson(Map<String, dynamic> json) {
     return Discussion(
@@ -49,9 +49,14 @@ class Discussion {
 }
 
 Future<DiscussionList> getDiscussionList() async {
-  final url = "http://didpisdp.beget.tech/api/get_discussion/1";
-  final response = await http.get(Uri.parse(url));
-  print(DiscussionList.fromJson(json.decode(response.body)));
+  final url = "http://didpisdp.beget.tech/api/get_discussion/${global.discussion_id}";
+  
+  final response = await http.get(
+    Uri.parse(url),
+    headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Bearer ${global.token}',
+  });
   if (response.statusCode == 200) {
     return DiscussionList.fromJson(json.decode(response.body));
   } else {

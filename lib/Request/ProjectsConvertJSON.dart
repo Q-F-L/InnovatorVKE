@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 
+import '../global.dart' as global;
 import 'package:http/http.dart' as http;
 
 class ProjectsList {
@@ -76,12 +78,76 @@ class Project {
   }
 }
 
+void acceptedProject() async {
+  final response = await http.put(
+      Uri.parse('http://didpisdp.beget.tech/api/status/${global.id}'),
+      body:
+      {
+        "status": 'accepted',
+      },
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ${global.token}',
+      });
+
+  if (response.statusCode == 200) {
+    print(response.body);
+    Navigator.pop;
+  } else {
+    throw Exception('Error: ${response.reasonPhrase}');
+  }
+}
+
+void deleteProject() async {
+  final response = await http.delete(
+      Uri.parse('http://didpisdp.beget.tech/api/delete_project/${global.id}'),
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ${global.token}',
+      });
+
+  if (response.statusCode == 200) {
+    print(response.body);
+    Navigator.pop;
+  } else {
+    throw Exception('Error: ${response.reasonPhrase}');
+  }
+}
+
 Future<ProjectsList> getProjectList() async {
   const url = 'http://didpisdp.beget.tech/api/all_project';
-  final response = await http.get(Uri.parse(url));
+  final response = await http.get(Uri.parse(url), headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Bearer ${global.token}',
+  });
 
   if (response.statusCode == 200) {
     return ProjectsList.fromJson(json.decode(response.body));
+  } else {
+    throw Exception('Error: ${response.reasonPhrase}');
+  }
+}
+
+void createProject() async {
+  const url = 'http://didpisdp.beget.tech/api/create_project';
+  final response = await http.post(Uri.parse(url), body: {
+    "topic": "${global.topic}",
+    "title": "${global.title}",
+    "now_description": "${global.now_description}",
+    "need_description": "${global.need_description}",
+    "will_description": "${global.will_description}",
+    "now_video": "1",
+    "now_photo": "1",
+    "need_video": "1",
+    "need_photo": "1",
+    "user_id": "${global.user_id}"
+  }, headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Bearer ${global.token}',
+  });
+
+  if (response.statusCode == 200) {
+    print('200');
   } else {
     throw Exception('Error: ${response.reasonPhrase}');
   }
