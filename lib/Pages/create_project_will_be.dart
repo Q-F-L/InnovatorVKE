@@ -11,6 +11,7 @@ class CreateWillBePage extends StatefulWidget {
 
 class _CreateWillBePage extends State<CreateWillBePage> {
   late TextEditingController _will_description;
+  final _formKey = GlobalKey<FormState>();
 
   void initState() {
     super.initState();
@@ -31,11 +32,10 @@ class _CreateWillBePage extends State<CreateWillBePage> {
                   Expanded(
                     flex: 1,
                     child: GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           Navigator.pushNamed(context, '/menu_page');
                         },
-                        child: Image.asset('assets/arrow_back.png')
-                    ),
+                        child: Image.asset('assets/arrow_back.png')),
                   ),
                   Expanded(
                     flex: 4,
@@ -44,19 +44,15 @@ class _CreateWillBePage extends State<CreateWillBePage> {
                       style: TextStyle(
                           fontSize: 36,
                           color: Color.fromRGBO(32, 86, 146, 1),
-                          fontWeight: FontWeight.w400
-                      ),
+                          fontWeight: FontWeight.w400),
                       textAlign: TextAlign.center,
                     ),
                   ),
                   Expanded(
-                      flex: 1,
-                      child: Image.asset('assets/logo_image.png')
-                  ),
+                      flex: 1, child: Image.asset('assets/logo_image.png')),
                 ],
               ),
             ),
-
             Expanded(
               flex: 5,
               child: Container(
@@ -71,75 +67,97 @@ class _CreateWillBePage extends State<CreateWillBePage> {
                       ),
                       textAlign: TextAlign.center,
                     ),
-
                     Form(
+                      key: _formKey,
                       child: Column(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(top: 25),
-                            width: MediaQuery
-                                .of(context)
-                                .size
-                                .height * 0.5,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(color: Color.fromRGBO(32, 86, 146, 1),width: 2),
-                              borderRadius: BorderRadius.circular(20),
-                              //border corner radius
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  //color of shadow
-                                  spreadRadius: 0.2,
-                                  //spread radius
-                                  blurRadius: 9,
-                                  // blur radius
-                                  offset: Offset(0, 6), // changes position of shadow
-                                ),
-                              ],
-                            ),
+                            margin: EdgeInsets.symmetric(vertical: 20),
+                            width: MediaQuery.of(context).size.height * 0.5,
                             child: TextFormField(
+                              validator: (value) =>
+                                  _validatorTextAreaInput(value),
                               controller: _will_description,
                               maxLines: 20,
                               maxLength: 999,
                               minLines: 10,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                  borderSide: BorderSide(
+                                    color: Color.fromARGB(255, 153, 0, 0),
+                                    width: 1.5,
+                                    style: BorderStyle.solid,
+                                  ),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(20.0)),
+                                  borderSide: const BorderSide(
+                                    color: const Color(0xFF000000),
+                                    width: 1.5,
+                                    style: BorderStyle.solid,
+                                  ),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(20.0)),
+                                  borderSide: const BorderSide(
+                                    color: Color.fromARGB(255, 153, 0, 0),
+                                    width: 1.5,
+                                    style: BorderStyle.solid,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(20.0)),
+                                  borderSide: const BorderSide(
+                                    color: Color.fromARGB(255, 0, 0, 0),
+                                    width: 1.5,
+                                    style: BorderStyle.solid,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-
                           SizedBox(
                             height: 50,
                           ),
-
                           Container(
                             width: MediaQuery.of(context).size.width * 0.7,
                             child: ElevatedButton(
                                 style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Color.fromRGBO(255, 255, 255, 1)),
-                                  minimumSize: MaterialStateProperty.all(
-                                      Size(MediaQuery.of(context).size.width * 0.7, 58)
-                                  ),
-                                  shadowColor: MaterialStateProperty.all(Color.fromRGBO(1, 1, 1, 1)),
-                                  shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                                  backgroundColor: MaterialStateProperty.all(
+                                      Color.fromRGBO(255, 255, 255, 1)),
+                                  minimumSize: MaterialStateProperty.all(Size(
+                                      MediaQuery.of(context).size.width * 0.7,
+                                      58)),
+                                  shadowColor: MaterialStateProperty.all(
+                                      Color.fromRGBO(1, 1, 1, 1)),
+                                  shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(24),
                                     // side: BorderSide(color: Colors.red),
                                   )),
                                   elevation: MaterialStateProperty.all(10),
                                   // padding: MaterialStateProperty.all(EdgeInsets.all(20))
                                 ),
-                                onPressed: (){
-                                  global.will_description = _will_description.text;
-                                  print(global.will_description);
-                                  print('object');
-                                  createProject();
-                                  Navigator.pushNamed(context, '/menu_page');
+                                onPressed: () {
+                                  if (_formKey.currentState!.validate()) {
+                                    global.will_description =
+                                        _will_description.text;
+                                    print(global.will_description);
+                                    print('object');
+                                    createProject();
+                                    Navigator.pushNamed(context, '/menu_page');
+                                  }
                                 },
                                 child: Text(
                                   'Готово',
-                                  style: TextStyle(color: Colors.blue[900], fontSize: 20),
-                                )
-                            ),
+                                  style: TextStyle(
+                                      color: Colors.blue[900], fontSize: 20),
+                                )),
                           ),
                         ],
                       ),
@@ -152,5 +170,13 @@ class _CreateWillBePage extends State<CreateWillBePage> {
         ),
       ),
     );
+  }
+
+  String? _validatorTextAreaInput(String? value) {
+    if (value!.isEmpty) {
+      return 'Обязательное поле для заполнения';
+    } else {
+      return null;
+    }
   }
 }

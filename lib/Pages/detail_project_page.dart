@@ -149,94 +149,108 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                             Expanded(child: Container()),
                             Expanded(
                               child: IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _rating = 1;
-                                  });
-                                },
-                                icon: (_rating >= 1 ? Icon(
-                                  Icons.star,
-                                  size: 45,
-                                  color: Colors.yellow,
-                                ) : Icon(
-                                  Icons.star_border,
-                                  size: 45,
-                                  color: Color.fromARGB(255, 41, 108, 163),
-                                ))
-                              ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _rating = 1;
+                                      getRating();
+                                    });
+                                  },
+                                  icon: (_rating >= 1
+                                      ? Icon(
+                                          Icons.star,
+                                          size: 45,
+                                          color: Colors.yellow,
+                                        )
+                                      : Icon(
+                                          Icons.star_border,
+                                          size: 45,
+                                          color:
+                                              Color.fromARGB(255, 41, 108, 163),
+                                        ))),
                             ),
                             Expanded(
                               child: IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _rating = 2;
-                                  });
-                                },
-                                icon: (_rating >= 2 ? Icon(
-                                  Icons.star,
-                                  size: 45,
-                                  color: Colors.yellow,
-                                ) : Icon(
-                                  Icons.star_border,
-                                  size: 45,
-                                  color: Color.fromARGB(255, 41, 108, 163),
-                                ))
-                              ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _rating = 2;
+                                      getRating();
+                                    });
+                                  },
+                                  icon: (_rating >= 2
+                                      ? Icon(
+                                          Icons.star,
+                                          size: 45,
+                                          color: Colors.yellow,
+                                        )
+                                      : Icon(
+                                          Icons.star_border,
+                                          size: 45,
+                                          color:
+                                              Color.fromARGB(255, 41, 108, 163),
+                                        ))),
                             ),
                             Expanded(
                               child: IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _rating = 3;
-                                  });
-                                },
-                                icon: (_rating >= 3 ? Icon(
-                                  Icons.star,
-                                  size: 45,
-                                  color: Colors.yellow,
-                                ) : Icon(
-                                  Icons.star_border,
-                                  size: 45,
-                                  color: Color.fromARGB(255, 41, 108, 163),
-                                ))
-                              ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _rating = 3;
+                                      getRating();
+                                    });
+                                  },
+                                  icon: (_rating >= 3
+                                      ? Icon(
+                                          Icons.star,
+                                          size: 45,
+                                          color: Colors.yellow,
+                                        )
+                                      : Icon(
+                                          Icons.star_border,
+                                          size: 45,
+                                          color:
+                                              Color.fromARGB(255, 41, 108, 163),
+                                        ))),
                             ),
                             Expanded(
                               child: IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _rating = 4;
-                                  });
-                                },
-                                icon: (_rating >= 4 ? Icon(
-                                  Icons.star,
-                                  size: 45,
-                                  color: Colors.yellow,
-                                ) : Icon(
-                                  Icons.star_border,
-                                  size: 45,
-                                  color: Color.fromARGB(255, 41, 108, 163),
-                                ))
-                              ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _rating = 4;
+                                      getRating();
+                                    });
+                                  },
+                                  icon: (_rating >= 4
+                                      ? Icon(
+                                          Icons.star,
+                                          size: 45,
+                                          color: Colors.yellow,
+                                        )
+                                      : Icon(
+                                          Icons.star_border,
+                                          size: 45,
+                                          color:
+                                              Color.fromARGB(255, 41, 108, 163),
+                                        ))),
                             ),
                             Expanded(
                               child: IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _rating = 5;
-                                    getRating();
-                                  });
-                                },
-                                icon: (_rating >= 5 ? Icon(
-                                  Icons.star,
-                                  size: 45,
-                                  color: Colors.yellow,
-                                ) : Icon(
-                                  Icons.star_border,
-                                  size: 45,
-                                  color: Color.fromARGB(255, 41, 108, 163),
-                                ))
-                              ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _rating = 5;
+                                      getRating();
+                                    });
+                                  },
+                                  icon: (_rating >= 5
+                                      ? Icon(
+                                          Icons.star,
+                                          size: 45,
+                                          color: Colors.yellow,
+                                        )
+                                      : Icon(
+                                          Icons.star_border,
+                                          size: 45,
+                                          color:
+                                              Color.fromARGB(255, 41, 108, 163),
+                                        ))),
                             ),
                             Expanded(child: Container()),
                           ],
@@ -280,74 +294,92 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                         SizedBox(
                           height: 20,
                         ),
-                        global.type == 'admin' ? Container(
-                          width: MediaQuery.of(context).size.width * 0.7,
-                          margin:
-                              EdgeInsets.only(bottom: 10, left: 10, right: 10),
-                          child: ElevatedButton(
-                              style: ButtonStyle(
-                                overlayColor: MaterialStateProperty.all(
-                                    Color.fromRGBO(0, 0, 0, 1)),
-                                backgroundColor: MaterialStateProperty.all(
-                                    Color.fromRGBO(255, 255, 255, 1)),
-                                minimumSize: MaterialStateProperty.all(Size(
-                                    MediaQuery.of(context).size.width * 0.7,
-                                    58)),
-                                shadowColor: MaterialStateProperty.all(
-                                    Color.fromRGBO(1, 1, 1, 1)),
-                                shape: MaterialStateProperty.all(
-                                    RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(24),
-                                  // side: BorderSide(color: Colors.red),
-                                )),
-                                elevation: MaterialStateProperty.all(10),
-                                // padding: MaterialStateProperty.all(EdgeInsets.all(20))
-                              ),
-                              onPressed: () {
-                                deleteProject();
-                                Navigator.pop;
-                              },
-                              child: Text(
-                                'Удалить',
-                                style: TextStyle(
-                                    color: Color.fromARGB(255, 190, 16, 16), fontSize: 20),
-                                textAlign: TextAlign.center,
-                              )),
-                        ) : Container(),
-                        global.type == 'admin' ? Container(
-                          width: MediaQuery.of(context).size.width * 0.7,
-                          margin:
-                              EdgeInsets.only(bottom: 10, left: 10, right: 10),
-                          child: ElevatedButton(
-                              style: ButtonStyle(
-                                overlayColor: MaterialStateProperty.all(
-                                    Color.fromRGBO(0, 0, 0, 1)),
-                                backgroundColor: MaterialStateProperty.all(
-                                    Color.fromRGBO(255, 255, 255, 1)),
-                                minimumSize: MaterialStateProperty.all(Size(
-                                    MediaQuery.of(context).size.width * 0.7,
-                                    58)),
-                                shadowColor: MaterialStateProperty.all(
-                                    Color.fromRGBO(1, 1, 1, 1)),
-                                shape: MaterialStateProperty.all(
-                                    RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(24),
-                                  // side: BorderSide(color: Colors.red),
-                                )),
-                                elevation: MaterialStateProperty.all(10),
-                                // padding: MaterialStateProperty.all(EdgeInsets.all(20))
-                              ),
-                              onPressed: () {
-                                acceptedProject();
-                                Navigator.pop;
-                              },
-                              child: Text(
-                                'Одобрить',
-                                style: TextStyle(
-                                    color: Color.fromARGB(255, 36, 190, 16), fontSize: 20),
-                                textAlign: TextAlign.center,
-                              )),
-                        ) : Container(),
+                        global.type == 'admin'
+                            ? Container(
+                                width: MediaQuery.of(context).size.width * 0.7,
+                                margin: EdgeInsets.only(
+                                    bottom: 10, left: 10, right: 10),
+                                child: ElevatedButton(
+                                    style: ButtonStyle(
+                                      overlayColor: MaterialStateProperty.all(
+                                          Color.fromRGBO(0, 0, 0, 1)),
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              Color.fromRGBO(255, 255, 255, 1)),
+                                      minimumSize: MaterialStateProperty.all(
+                                          Size(
+                                              MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.7,
+                                              58)),
+                                      shadowColor: MaterialStateProperty.all(
+                                          Color.fromRGBO(1, 1, 1, 1)),
+                                      shape: MaterialStateProperty.all(
+                                          RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(24),
+                                        // side: BorderSide(color: Colors.red),
+                                      )),
+                                      elevation: MaterialStateProperty.all(10),
+                                      // padding: MaterialStateProperty.all(EdgeInsets.all(20))
+                                    ),
+                                    onPressed: () {
+                                      deleteProject();
+                                      Navigator.pop;
+                                    },
+                                    child: Text(
+                                      'Удалить',
+                                      style: TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 190, 16, 16),
+                                          fontSize: 20),
+                                      textAlign: TextAlign.center,
+                                    )),
+                              )
+                            : Container(),
+                        global.type == 'admin'
+                            ? Container(
+                                width: MediaQuery.of(context).size.width * 0.7,
+                                margin: EdgeInsets.only(
+                                    bottom: 10, left: 10, right: 10),
+                                child: ElevatedButton(
+                                    style: ButtonStyle(
+                                      overlayColor: MaterialStateProperty.all(
+                                          Color.fromRGBO(0, 0, 0, 1)),
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              Color.fromRGBO(255, 255, 255, 1)),
+                                      minimumSize: MaterialStateProperty.all(
+                                          Size(
+                                              MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.7,
+                                              58)),
+                                      shadowColor: MaterialStateProperty.all(
+                                          Color.fromRGBO(1, 1, 1, 1)),
+                                      shape: MaterialStateProperty.all(
+                                          RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(24),
+                                        // side: BorderSide(color: Colors.red),
+                                      )),
+                                      elevation: MaterialStateProperty.all(10),
+                                      // padding: MaterialStateProperty.all(EdgeInsets.all(20))
+                                    ),
+                                    onPressed: () {
+                                      acceptedProject();
+                                      Navigator.pop;
+                                    },
+                                    child: Text(
+                                      'Одобрить',
+                                      style: TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 36, 190, 16),
+                                          fontSize: 20),
+                                      textAlign: TextAlign.center,
+                                    )),
+                              )
+                            : Container(),
                       ],
                     ),
                   ],
@@ -359,28 +391,26 @@ class _DetailProjectPage extends State<DetailProjectPage> {
       ),
     );
   }
-  
+
   Future getRating() async {
     final response = await http.get(
-        Uri.parse('http://didpisdp.beget.tech/api/rating/${global.id}/$_rating'),
+        Uri.parse(
+            'http://didpisdp.beget.tech/api/rating/${global.id}/$_rating'),
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ${global.token}',
-        }
-    );
+        });
+    print(response.body);
     final uploadRatingCalc = await http.get(
         Uri.parse('http://didpisdp.beget.tech/api/rating_calc/${global.id}'),
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ${global.token}',
-        }
-    );
+        });
     if (response.statusCode == 200) {
       print(response.body);
     } else {
       throw Exception('Error: ${response.reasonPhrase}');
     }
   }
-
-  
 }
