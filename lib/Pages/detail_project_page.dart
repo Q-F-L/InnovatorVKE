@@ -12,7 +12,6 @@ class DetailProjectPage extends StatefulWidget {
 }
 
 class _DetailProjectPage extends State<DetailProjectPage> {
-  // late Object? project;
   int _rating = 0;
   @override
   void initState() {
@@ -21,8 +20,6 @@ class _DetailProjectPage extends State<DetailProjectPage> {
 
   @override
   Widget build(BuildContext context) {
-    // RouteSettings settings = ModalRoute.of(context)!.settings;
-    // project = settings.arguments;
     return Scaffold(
       body: Container(
         padding: EdgeInsets.only(top: 30),
@@ -32,6 +29,7 @@ class _DetailProjectPage extends State<DetailProjectPage> {
               flex: 1,
               child: Row(
                 children: [
+                  //Шапка
                   Expanded(
                     flex: 1,
                     child: GestureDetector(
@@ -43,7 +41,7 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                   Expanded(
                     flex: 4,
                     child: Text(
-                      'Проекты',
+                      'Заявка',
                       style: TextStyle(
                           fontSize: 36,
                           color: Color.fromRGBO(32, 86, 146, 1),
@@ -56,6 +54,8 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                 ],
               ),
             ),
+
+            //Тело
             Expanded(
               flex: 9,
               child: Container(
@@ -368,7 +368,7 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                                     ),
                                     onPressed: () {
                                       acceptedProject();
-                                      Navigator.pop;
+                                      Navigator.pushNamed(context, '/list_project_page');
                                     },
                                     child: Text(
                                       'Одобрить',

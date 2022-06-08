@@ -24,6 +24,7 @@ class Discussion {
   final int? id;
   final int? discussion_id;
   final int? user_id;
+  final String? user_name;
   final String? message;
   final String? created_at;
   final String? updated_at;
@@ -32,6 +33,7 @@ class Discussion {
       {this.id,
       this.discussion_id,
       this.user_id,
+      this.user_name,
       this.message,
       this.created_at,
       this.updated_at});
@@ -41,6 +43,7 @@ class Discussion {
       id: json['id'] as int,
       discussion_id: json['discussion_id'] as int,
       user_id: json['user_id'] as int,
+      user_name: json['user_name'] as String,
       message: json['message'] as String,
       created_at: json['created_at'] as String,
       updated_at: json['updated_at'] as String,

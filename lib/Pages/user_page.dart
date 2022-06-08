@@ -37,7 +37,7 @@ class _UserPage extends State<UserPage> {
                   Expanded(
                     flex: 4,
                     child: Text(
-                      'Мой статус',
+                      'Личный кабинет',
                       style: TextStyle(
                           fontSize: 36,
                           color: Color.fromRGBO(32, 86, 146, 1),

@@ -36,7 +36,7 @@ class _ListProjectPage extends State<ListProjectPage> {
                   Expanded(
                     flex: 4,
                     child: Text(
-                      'Проекты',
+                      'Заявки',
                       style: TextStyle(
                           fontSize: 36,
                           color: Color.fromRGBO(32, 86, 146, 1),

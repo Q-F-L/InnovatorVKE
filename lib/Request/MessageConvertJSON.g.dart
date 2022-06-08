@@ -22,6 +22,7 @@ Discussion _$DiscussionFromJson(Map<String, dynamic> json) => Discussion(
       id: json['id'] as int,
       discussion_id: json['discussion_id'] as int,
       user_id: json['user_id'] as int,
+      user_name: json['user_name'] as String,
       message: json['message'] as String,
       created_at: json['created_at'] as String,
       updated_at: json['updated_at'] as String,

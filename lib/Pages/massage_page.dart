@@ -74,7 +74,7 @@ class _MassagetPage extends State<MassagetPage> {
                             return ListView.builder(
                               itemCount: snapshot.data?.discussion.length,
                               itemBuilder: (BuildContext context, int index) {
-                                if (5 !=
+                                if (global.user_id !=
                                     snapshot.data?.discussion[index].user_id)
                                   return Container(
                                     alignment: Alignment.bottomLeft,
