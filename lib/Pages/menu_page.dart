@@ -29,7 +29,6 @@ class MenuPage extends StatelessWidget {
                   ],
                 ),
               ),
-
               Expanded(
                 flex: 5,
                 child: Container(

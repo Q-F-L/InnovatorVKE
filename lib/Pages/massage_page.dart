@@ -187,35 +187,55 @@ class _MassagetPage extends State<MassagetPage> {
                       ),
                     ),
                     Container(
-                      height: 58,
-                      margin: const EdgeInsets.only(bottom: 10),
-                      width: MediaQuery.of(context).size.height * 0.5,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(90),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 0.2,
-                            blurRadius: 9,
-                            offset: Offset(0, 6),
+                    margin: EdgeInsets.symmetric(vertical: 20),
+                    width: MediaQuery.of(context).size.height * 0.5,
+                    child: TextFormField(
+                      controller: _message,
+                      focusNode: _weightFocus,
+                      textInputAction: TextInputAction.done,
+                      onFieldSubmitted: (_message) {
+                        _weightFocus.unfocus();
+                        createMessage(_message);
+                      },
+                      maxLength: 100,
+                      decoration: const InputDecoration(
+                        hintText: "Ваше сообщение",
+                        focusedErrorBorder:  OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(90.0)),
+                          borderSide: BorderSide(
+                            color: Color.fromARGB(255, 153, 0, 0),
+                            width: 1.5,
+                            style: BorderStyle.solid,
                           ),
-                        ],
-                      ),
-                      child: TextFormField(
-                        controller: _message,
-                        focusNode: _weightFocus,
-                        textInputAction: TextInputAction.done,
-                        onFieldSubmitted: (_message) {
-                          _weightFocus.unfocus();
-                          createMessage(_message);
-                        },
-                        maxLength: 100,
-                        decoration: const InputDecoration(
-                          hintText: "Ваше сообщение",
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(90.0)),
+                          borderSide: BorderSide(
+                            color:Color(0xFF000000),
+                            width: 1.5,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(90.0)),
+                          borderSide: BorderSide(
+                            color: Color.fromARGB(255, 153, 0, 0),
+                            width: 1.5,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(90.0)),
+                          borderSide: BorderSide(
+                            color: Color.fromARGB(255, 0, 0, 0),
+                            width: 1.5,
+                            style: BorderStyle.solid,
+                          ),
                         ),
                       ),
                     ),
+                  ),
                   ],
                 ),
               ),

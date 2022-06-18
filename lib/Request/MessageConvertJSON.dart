@@ -4,6 +4,7 @@ import '../global.dart' as global;
 import 'package:http/http.dart' as http;
 part 'MessageConvertJSON.g.dart';
 
+@JsonSerializable()
 class DiscussionList {
   List<Discussion> discussion;
   DiscussionList({required this.discussion});
@@ -20,6 +21,7 @@ class DiscussionList {
   }
 }
 
+@JsonSerializable()
 class Discussion {
   final int? id;
   final int? discussion_id;

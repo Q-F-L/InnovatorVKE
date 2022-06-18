@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'Pages/create_project.dart';
 import 'Pages/create_project_after.dart';
 import 'Pages/create_project_now.dart';
@@ -37,7 +36,6 @@ class MyApp extends StatelessWidget {
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide.none,
-            //   borderRadius: BorderRadius.all(Radius.circular(90))
           ),
           labelStyle: TextStyle(
           fontSize: 35,

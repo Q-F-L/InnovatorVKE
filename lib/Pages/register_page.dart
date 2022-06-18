@@ -176,7 +176,7 @@ class _RegisterPage extends State<RegisterPage> {
                     ),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width * 0.7,
+                    width: MediaQuery.of(context).size.height * 0.5,
                     margin: EdgeInsets.only(top: 140),
                     child: ElevatedButton(
                         style: ButtonStyle(
