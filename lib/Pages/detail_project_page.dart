@@ -282,10 +282,8 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                                 shape: MaterialStateProperty.all(
                                     RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(24),
-                                  // side: BorderSide(color: Colors.red),
                                 )),
                                 elevation: MaterialStateProperty.all(10),
-                                // padding: MaterialStateProperty.all(EdgeInsets.all(20))
                               ),
                               onPressed: () {
                                 Navigator.pushNamed(context, '/message_page');
@@ -324,14 +322,12 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                                       shape: MaterialStateProperty.all(
                                           RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(24),
-                                        // side: BorderSide(color: Colors.red),
                                       )),
                                       elevation: MaterialStateProperty.all(10),
-                                      // padding: MaterialStateProperty.all(EdgeInsets.all(20))
                                     ),
                                     onPressed: () {
                                       deleteProject();
-                                      Navigator.pop;
+                                      Navigator.pushNamed(context, '/list_project_page');
                                     },
                                     child: const Text(
                                       'Удалить',
@@ -367,10 +363,8 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                                       shape: MaterialStateProperty.all(
                                           RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(24),
-                                        // side: BorderSide(color: Colors.red),
                                       )),
                                       elevation: MaterialStateProperty.all(10),
-                                      // padding: MaterialStateProperty.all(EdgeInsets.all(20))
                                     ),
                                     onPressed: () {
                                       acceptedProject();

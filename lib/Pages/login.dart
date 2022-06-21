@@ -81,7 +81,7 @@ class _LoginPage extends State<LoginPage> {
                         ),
                         hintText: 'Почта',
                       ),
-                      keyboardType: TextInputType.name,
+                      keyboardType: TextInputType.emailAddress,
                     ),
                   ),
                   Container(
@@ -136,7 +136,7 @@ class _LoginPage extends State<LoginPage> {
 
             Container(
               width: MediaQuery.of(context).size.width * 0.7,
-              margin:const EdgeInsets.only(top: 140),
+              margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.2),
               child: ElevatedButton(
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Color.fromRGBO(255, 255, 255, 1)),
@@ -159,6 +159,9 @@ class _LoginPage extends State<LoginPage> {
                     style: TextStyle(color: Colors.blue[900], fontSize: 20),
                   )
               ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.01,
             ),
             TextButton(
               onPressed: (){

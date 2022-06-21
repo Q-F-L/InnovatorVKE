@@ -28,7 +28,6 @@ class _RegisterPage extends State<RegisterPage> {
         child: ListView(
           // mainAxisAlignment: MainAxisAlignment.center,
           padding: EdgeInsets.only(
-              top: 120,
               left: MediaQuery.of(context).size.width * 0.07,
               right: MediaQuery.of(context).size.width * 0.07),
           children: <Widget>[
@@ -133,7 +132,7 @@ class _RegisterPage extends State<RegisterPage> {
                         ),
                         hintText: 'Почта',
                       ),
-                      keyboardType: TextInputType.name,
+                      keyboardType: TextInputType.emailAddress,
                     ),
                   ),
                   Container(
@@ -183,7 +182,7 @@ class _RegisterPage extends State<RegisterPage> {
                   ),
                   Container(
                     width: MediaQuery.of(context).size.height * 0.5,
-                    margin:const EdgeInsets.only(top: 140),
+                    margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.2),
                     child: ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
@@ -211,6 +210,9 @@ class _RegisterPage extends State<RegisterPage> {
                   ),
                 ],
               ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.01,
             ),
             TextButton(
               onPressed: () {

@@ -1,10 +1,10 @@
 library globals;
 
-String token = 'PEIJzVuAI93TMpWj1TdzajOq4bElRg8pnDh65XwlNt5WNmVrD5a79BCRymrG';
+String token = '';
 String email = '';
 String password= '';
 int user_id = 118;
-String type = 'admin';
+String type = '';
 
 int id = -1;
 String topic = '';
