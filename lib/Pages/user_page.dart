@@ -18,7 +18,7 @@ class _UserPage extends State<UserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.only(top: 30),
+        padding: const EdgeInsets.only(top: 30),
         child: Column(
           children: [
             Expanded(
@@ -33,7 +33,7 @@ class _UserPage extends State<UserPage> {
                         },
                         child: Image.asset('assets/arrow_back.png')),
                   ),
-                  Expanded(
+                  const Expanded(
                     flex: 4,
                     child: Text(
                       'Личный кабинет',
@@ -79,7 +79,7 @@ class _UserPage extends State<UserPage> {
                                 TableRow(
                                   children: [
                                     Container(
-                                      child: Text(
+                                      child:const Text(
                                         'Оценок',
                                         textAlign: TextAlign.start,
                                         style: TextStyle(
@@ -95,7 +95,7 @@ class _UserPage extends State<UserPage> {
                                       child: Text(
                                         '${snapshot.data!.estimation}',
                                         textAlign: TextAlign.start,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 20,
                                           color: Color.fromRGBO(32, 86, 146, 1),
                                         ),
@@ -106,7 +106,7 @@ class _UserPage extends State<UserPage> {
                                 TableRow(
                                   children: <Widget>[
                                     Container(
-                                      child: Text(
+                                      child: const Text(
                                         'Комментариев',
                                         textAlign: TextAlign.start,
                                         style: TextStyle(
@@ -122,7 +122,7 @@ class _UserPage extends State<UserPage> {
                                       child: Text(
                                         '${snapshot.data!.comments}',
                                         textAlign: TextAlign.start,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 20,
                                           color: Color.fromRGBO(32, 86, 146, 1),
                                         ),
@@ -133,7 +133,7 @@ class _UserPage extends State<UserPage> {
                                 TableRow(
                                   children: <Widget>[
                                     Container(
-                                      child: Text(
+                                      child: const Text(
                                         'Предложений',
                                         textAlign: TextAlign.start,
                                         style: TextStyle(
@@ -149,7 +149,7 @@ class _UserPage extends State<UserPage> {
                                       child: Text(
                                         '${snapshot.data!.offers}',
                                         textAlign: TextAlign.start,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 20,
                                           color: Color.fromRGBO(32, 86, 146, 1),
                                         ),
@@ -226,7 +226,7 @@ class _UserPage extends State<UserPage> {
                     } else if (snapshot.hasError) {
                       return Text("$snapshot");
                     }
-                    return Text('Empty');
+                    return const Text('Empty');
                   },
                 ),
               ),

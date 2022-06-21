@@ -145,7 +145,7 @@ void createProject() async {
   });
 
   if (response.statusCode == 200) {
-    print('200');
+    
   } else {
     throw Exception('Error: ${response.reasonPhrase}');
   }
