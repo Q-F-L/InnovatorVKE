@@ -87,12 +87,12 @@ class _CreatePage extends State<CreatePage> {
                       child: Column(
                         children: [
                           Container(
-                            margin: EdgeInsets.symmetric(vertical: 20),
+                            margin: const EdgeInsets.symmetric(vertical: 20),
                             width: MediaQuery.of(context).size.height * 0.5,
                             child: TextFormField(
                               validator: (value) => _validatorShortInput(value),
                               controller: _topic,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(90.0)),
@@ -103,27 +103,27 @@ class _CreatePage extends State<CreatePage> {
                                   ),
                                 ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderRadius: const BorderRadius.all(
+                                  borderRadius:  BorderRadius.all(
                                       Radius.circular(90.0)),
-                                  borderSide: const BorderSide(
-                                    color: const Color(0xFF000000),
+                                  borderSide:  BorderSide(
+                                    color:  Color(0xFF000000),
                                     width: 1.5,
                                     style: BorderStyle.solid,
                                   ),
                                 ),
                                 errorBorder: OutlineInputBorder(
-                                  borderRadius: const BorderRadius.all(
+                                  borderRadius:  BorderRadius.all(
                                       Radius.circular(90.0)),
-                                  borderSide: const BorderSide(
+                                  borderSide:  BorderSide(
                                     color: Color.fromARGB(255, 153, 0, 0),
                                     width: 1.5,
                                     style: BorderStyle.solid,
                                   ),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderRadius: const BorderRadius.all(
+                                  borderRadius:  BorderRadius.all(
                                       Radius.circular(90.0)),
-                                  borderSide: const BorderSide(
+                                  borderSide:  BorderSide(
                                     color: Color.fromARGB(255, 0, 0, 0),
                                     width: 1.5,
                                     style: BorderStyle.solid,
@@ -134,12 +134,12 @@ class _CreatePage extends State<CreatePage> {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.symmetric(vertical: 20),
+                            margin: const EdgeInsets.symmetric(vertical: 20),
                             width: MediaQuery.of(context).size.height * 0.5,
                             child: TextFormField(
                               validator: (value) => _validatorShortInput(value),
                               controller: _title,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(90.0)),
@@ -150,27 +150,27 @@ class _CreatePage extends State<CreatePage> {
                                   ),
                                 ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderRadius: const BorderRadius.all(
+                                  borderRadius:  BorderRadius.all(
                                       Radius.circular(90.0)),
-                                  borderSide: const BorderSide(
-                                    color: const Color(0xFF000000),
+                                  borderSide:  BorderSide(
+                                    color:  Color(0xFF000000),
                                     width: 1.5,
                                     style: BorderStyle.solid,
                                   ),
                                 ),
                                 errorBorder: OutlineInputBorder(
-                                  borderRadius: const BorderRadius.all(
+                                  borderRadius:  BorderRadius.all(
                                       Radius.circular(90.0)),
-                                  borderSide: const BorderSide(
+                                  borderSide:  BorderSide(
                                     color: Color.fromARGB(255, 153, 0, 0),
                                     width: 1.5,
                                     style: BorderStyle.solid,
                                   ),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderRadius: const BorderRadius.all(
+                                  borderRadius:  BorderRadius.all(
                                       Radius.circular(90.0)),
-                                  borderSide: const BorderSide(
+                                  borderSide:  BorderSide(
                                     color: Color.fromARGB(255, 0, 0, 0),
                                     width: 1.5,
                                     style: BorderStyle.solid,
@@ -183,16 +183,16 @@ class _CreatePage extends State<CreatePage> {
                           ),
                           Container(
                             width: MediaQuery.of(context).size.width * 0.7,
-                            margin: EdgeInsets.only(top: 140),
+                            margin: const EdgeInsets.only(top: 140),
                             child: ElevatedButton(
                                 style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(
-                                      Color.fromRGBO(255, 255, 255, 1)),
+                                      const Color.fromRGBO(255, 255, 255, 1)),
                                   minimumSize: MaterialStateProperty.all(Size(
                                       MediaQuery.of(context).size.width * 0.7,
                                       58)),
                                   shadowColor: MaterialStateProperty.all(
-                                      Color.fromRGBO(1, 1, 1, 1)),
+                                      const Color.fromRGBO(1, 1, 1, 1)),
                                   shape: MaterialStateProperty.all(
                                       RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(24),
@@ -205,8 +205,6 @@ class _CreatePage extends State<CreatePage> {
                                   if (_formKey.currentState!.validate()) {
                                     global.title = _title.text;
                                     global.topic = _topic.text;
-                                    print(global.topic);
-                                    print(global.title);
                                     Navigator.pushNamed(
                                         context, '/create_now_page');
                                   }

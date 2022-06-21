@@ -21,7 +21,7 @@ class _CreateNowPage extends State<CreateNowPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.only(top: 30),
+        padding: const EdgeInsets.only(top: 30),
         child: Column(
           children: [
             Expanded(
@@ -36,7 +36,7 @@ class _CreateNowPage extends State<CreateNowPage> {
                         },
                         child: Image.asset('assets/arrow_back.png')),
                   ),
-                  Expanded(
+                  const Expanded(
                     flex: 4,
                     child: Text(
                       'Создать',
@@ -58,7 +58,7 @@ class _CreateNowPage extends State<CreateNowPage> {
                 width: MediaQuery.of(context).size.width * 0.85,
                 child: ListView(
                   children: [
-                    Text(
+                    const Text(
                       'Расскажите как сейчас',
                       style: TextStyle(
                         fontSize: 20,
@@ -71,7 +71,7 @@ class _CreateNowPage extends State<CreateNowPage> {
                       child: Column(
                         children: [
                           Container(
-                            margin: EdgeInsets.symmetric(vertical: 20),
+                            margin: const EdgeInsets.symmetric(vertical: 20),
                             width: MediaQuery.of(context).size.height * 0.5,
                             child: TextFormField(
                               validator: (value) =>
@@ -91,27 +91,27 @@ class _CreateNowPage extends State<CreateNowPage> {
                                   ),
                                 ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderRadius: const BorderRadius.all(
+                                  borderRadius:  BorderRadius.all(
                                       Radius.circular(20.0)),
-                                  borderSide: const BorderSide(
-                                    color: const Color(0xFF000000),
+                                  borderSide:  BorderSide(
+                                    color:  Color(0xFF000000),
                                     width: 1.5,
                                     style: BorderStyle.solid,
                                   ),
                                 ),
                                 errorBorder: OutlineInputBorder(
-                                  borderRadius: const BorderRadius.all(
+                                  borderRadius:  BorderRadius.all(
                                       Radius.circular(20.0)),
-                                  borderSide: const BorderSide(
+                                  borderSide:  BorderSide(
                                     color: Color.fromARGB(255, 153, 0, 0),
                                     width: 1.5,
                                     style: BorderStyle.solid,
                                   ),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderRadius: const BorderRadius.all(
+                                  borderRadius:  BorderRadius.all(
                                       Radius.circular(20.0)),
-                                  borderSide: const BorderSide(
+                                  borderSide:  BorderSide(
                                     color: Color.fromARGB(255, 0, 0, 0),
                                     width: 1.5,
                                     style: BorderStyle.solid,
@@ -120,18 +120,18 @@ class _CreateNowPage extends State<CreateNowPage> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 50),
+                          const SizedBox(height: 50),
                           Container(
                             width: MediaQuery.of(context).size.width * 0.7,
                             child: ElevatedButton(
                                 style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(
-                                      Color.fromRGBO(255, 255, 255, 1)),
+                                      const Color.fromRGBO(255, 255, 255, 1)),
                                   minimumSize: MaterialStateProperty.all(Size(
                                       MediaQuery.of(context).size.width * 0.7,
                                       58)),
                                   shadowColor: MaterialStateProperty.all(
-                                      Color.fromRGBO(1, 1, 1, 1)),
+                                      const Color.fromRGBO(1, 1, 1, 1)),
                                   shape: MaterialStateProperty.all(
                                       RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(24),
@@ -144,7 +144,6 @@ class _CreateNowPage extends State<CreateNowPage> {
                                   if (_formKey.currentState!.validate()) {
                                     global.now_description =
                                         _now_description.text;
-                                    print(global.now_description);
                                     Navigator.pushNamed(
                                         context, '/create_after_page');
                                   }

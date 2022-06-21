@@ -18,7 +18,7 @@ class _ListProjectPage extends State<ListProjectPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.only(top: 30),
+        padding: const EdgeInsets.only(top: 30),
         child: Column(
           children: [
             Expanded(
@@ -33,7 +33,7 @@ class _ListProjectPage extends State<ListProjectPage> {
                         },
                         child: Image.asset('assets/arrow_back.png')),
                   ),
-                  Expanded(
+                  const Expanded(
                     flex: 4,
                     child: Text(
                       'Заявки',
@@ -103,19 +103,19 @@ class _ListProjectPage extends State<ListProjectPage> {
                                           children: [
                                             Text(
                                               '${snapshot.data?.projects[index].title}',
-                                              style: TextStyle(
+                                              style:const TextStyle(
                                                   fontSize: 20,
                                                   color: Color.fromRGBO(
                                                       32, 86, 146, 1),
                                                   fontWeight: FontWeight.w400),
                                               textAlign: TextAlign.end,
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 15,
                                             ),
                                             Text(
                                               '${snapshot.data?.projects[index].rating}/5',
-                                              style: TextStyle(
+                                              style:const TextStyle(
                                                   fontSize: 14,
                                                   color: Color.fromRGBO(
                                                       114, 114, 114, 1.0),
@@ -124,7 +124,7 @@ class _ListProjectPage extends State<ListProjectPage> {
                                             ),
                                             Text(
                                               '${snapshot.data?.projects[index].topic}',
-                                              style: TextStyle(
+                                              style:const TextStyle(
                                                   fontSize: 14,
                                                   color: Color.fromRGBO(
                                                       32, 86, 146, 1),
@@ -140,9 +140,9 @@ class _ListProjectPage extends State<ListProjectPage> {
                               );
                             });
                       } else if (snapshot.hasError) {
-                        return Text('Error');
+                        return const Text('Error');
                       }
-                      return Text('Empty');
+                      return const Text('Empty');
                     },
                   )),
             )

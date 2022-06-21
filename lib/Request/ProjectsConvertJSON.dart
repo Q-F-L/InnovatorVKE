@@ -91,7 +91,6 @@ void acceptedProject() async {
       });
 
   if (response.statusCode == 200) {
-    print(response.body);
     Navigator.pop;
   } else {
     throw Exception('Error: ${response.reasonPhrase}');
@@ -107,7 +106,6 @@ void deleteProject() async {
       });
 
   if (response.statusCode == 200) {
-    print(response.body);
     Navigator.pop;
   } else {
     throw Exception('Error: ${response.reasonPhrase}');

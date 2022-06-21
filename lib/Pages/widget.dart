@@ -6,12 +6,12 @@ Widget ButtonMyWidget (context, path, title,double marginTop) {
     margin: EdgeInsets.only(top: marginTop),
     child: ElevatedButton(
         style: ButtonStyle(
-          overlayColor: MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 1)),
-          backgroundColor: MaterialStateProperty.all(Color.fromRGBO(255, 255, 255, 1)),
+          overlayColor: MaterialStateProperty.all(const Color.fromRGBO(0, 0, 0, 1)),
+          backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(255, 255, 255, 1)),
           minimumSize: MaterialStateProperty.all(
               Size(MediaQuery.of(context).size.width * 0.7, 58)
           ),
-          shadowColor: MaterialStateProperty.all(Color.fromRGBO(1, 1, 1, 1)),
+          shadowColor: MaterialStateProperty.all(const Color.fromRGBO(1, 1, 1, 1)),
           shape: MaterialStateProperty.all(RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24),
             // side: BorderSide(color: Colors.red),
@@ -49,7 +49,7 @@ Widget AppBarMyWidget (context, path, title){
           flex: 4,
           child: Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 36,
                 color: Color.fromRGBO(32, 86, 146, 1),
                 fontWeight: FontWeight.w400

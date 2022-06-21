@@ -36,7 +36,7 @@ class MenuPage extends StatelessWidget {
                   child: ListView(
                     children: [
                       Container(
-                        margin: EdgeInsets.only(bottom: 20),
+                        margin: const EdgeInsets.only(bottom: 20),
                         width: MediaQuery.of(context).size.width * 0.85,
                         height: MediaQuery.of(context).size.height * 0.2,
                         decoration: BoxDecoration(
@@ -50,7 +50,7 @@ class MenuPage extends StatelessWidget {
                                 //spread radius
                                 blurRadius: 0,
                                 // blur radius
-                                offset: Offset(0, 6), // changes position of shadow
+                                offset: const Offset(0, 6), // changes position of shadow
                               ),
                             ]),
                         child: GestureDetector(
@@ -66,7 +66,7 @@ class MenuPage extends StatelessWidget {
                                   alignment: AlignmentDirectional.center,
                                   height: 100,
                                   width: 150,
-                                  child: Text(
+                                  child:const Text(
                                     'Создать предложение',
                                     softWrap: true,
                                     textAlign: TextAlign.center,
@@ -80,7 +80,7 @@ class MenuPage extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(bottom: 20),
+                        margin:const EdgeInsets.only(bottom: 20),
                         width: MediaQuery.of(context).size.width * 0.85,
                         height: MediaQuery.of(context).size.height * 0.2,
                         decoration: BoxDecoration(
@@ -94,7 +94,7 @@ class MenuPage extends StatelessWidget {
                                 //spread radius
                                 blurRadius: 0,
                                 // blur radius
-                                offset: Offset(0, 6), // changes position of shadow
+                                offset:const Offset(0, 6), // changes position of shadow
                               ),
                             ]),
                         child: GestureDetector(
@@ -110,7 +110,7 @@ class MenuPage extends StatelessWidget {
                                   alignment: AlignmentDirectional.center,
                                   height: 100,
                                   width: 150,
-                                  child: Text(
+                                  child:const Text(
                                     'Заявки',
                                     softWrap: true,
                                     textAlign: TextAlign.center,
@@ -124,7 +124,7 @@ class MenuPage extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(bottom: 20),
+                        margin:const EdgeInsets.only(bottom: 20),
                         width: MediaQuery.of(context).size.width * 0.85,
                         height: MediaQuery.of(context).size.height * 0.2,
                         decoration: BoxDecoration(
@@ -138,7 +138,7 @@ class MenuPage extends StatelessWidget {
                                 //spread radius
                                 blurRadius: 0,
                                 // blur radius
-                                offset: Offset(0, 6), // changes position of shadow
+                                offset:const Offset(0, 6), // changes position of shadow
                               ),
                             ]),
                         child: GestureDetector(
@@ -154,7 +154,7 @@ class MenuPage extends StatelessWidget {
                                   alignment: AlignmentDirectional.center,
                                   height: 100,
                                   width: 150,
-                                  child: Text(
+                                  child:const Text(
                                     'Личный кабинет',
                                     softWrap: true,
                                     textAlign: TextAlign.center,

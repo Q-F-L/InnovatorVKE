@@ -11,19 +11,19 @@ class HiPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset('assets/logo.png'),
-            Text(
+            const Text(
               'Рационализатор',
               style: TextStyle(color: Colors.black, fontSize: 20),
             ),
             Container(
-              margin: EdgeInsets.only(top: 183),
+              margin:const EdgeInsets.only(top: 183),
               child: ElevatedButton(
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Color.fromRGBO(255, 255, 255, 1)),
+                  backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(255, 255, 255, 1)),
                   minimumSize: MaterialStateProperty.all(
                     Size(MediaQuery.of(context).size.width * 0.7, 58)
                     ),
-                  shadowColor: MaterialStateProperty.all(Color.fromRGBO(1, 1, 1, 1)),
+                  shadowColor: MaterialStateProperty.all(const Color.fromRGBO(1, 1, 1, 1)),
                   shape: MaterialStateProperty.all(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(24),
                     // side: BorderSide(color: Colors.red),

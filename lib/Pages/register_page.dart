@@ -10,6 +10,7 @@ class _RegisterPage extends State<RegisterPage> {
   TextEditingController email = TextEditingController();
   TextEditingController name = TextEditingController();
   TextEditingController password = TextEditingController();
+  String error = '';
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -37,12 +38,17 @@ class _RegisterPage extends State<RegisterPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 20),
+                    width: 100,
+                    height: 100,
+                    child: Text('${error}', style: TextStyle(color: Colors.red),),
+                  ),
+                  Container(
+                    margin:const EdgeInsets.symmetric(vertical: 20),
                     width: MediaQuery.of(context).size.height * 0.5,
                     child: TextFormField(
                       validator: (value) => _validatorName(value),
                       controller: name,
-                      decoration: InputDecoration(
+                      decoration:const InputDecoration(
                         focusedErrorBorder:  OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(90.0)),
                           borderSide: BorderSide(
@@ -53,17 +59,17 @@ class _RegisterPage extends State<RegisterPage> {
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius:
-                              const BorderRadius.all(Radius.circular(90.0)),
-                          borderSide: const BorderSide(
-                            color: const Color(0xFF000000),
+                               BorderRadius.all(Radius.circular(90.0)),
+                          borderSide:  BorderSide(
+                            color:  Color(0xFF000000),
                             width: 1.5,
                             style: BorderStyle.solid,
                           ),
                         ),
                         errorBorder: OutlineInputBorder(
                           borderRadius:
-                              const BorderRadius.all(Radius.circular(90.0)),
-                          borderSide: const BorderSide(
+                               BorderRadius.all(Radius.circular(90.0)),
+                          borderSide:  BorderSide(
                             color: Color.fromARGB(255, 153, 0, 0),
                             width: 1.5,
                             style: BorderStyle.solid,
@@ -71,8 +77,8 @@ class _RegisterPage extends State<RegisterPage> {
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius:
-                              const BorderRadius.all(Radius.circular(90.0)),
-                          borderSide: const BorderSide(
+                               BorderRadius.all(Radius.circular(90.0)),
+                          borderSide:  BorderSide(
                             color: Color.fromARGB(255, 0, 0, 0),
                             width: 1.5,
                             style: BorderStyle.solid,
@@ -84,12 +90,12 @@ class _RegisterPage extends State<RegisterPage> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 20),
+                    margin:const EdgeInsets.symmetric(vertical: 20),
                     width: MediaQuery.of(context).size.height * 0.5,
                     child: TextFormField(
                       validator: (value) => _validatorEmail(value),
                       controller: email,
-                      decoration: InputDecoration(
+                      decoration:const InputDecoration(
                         focusedErrorBorder:  OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(90.0)),
                           borderSide: BorderSide(
@@ -100,17 +106,17 @@ class _RegisterPage extends State<RegisterPage> {
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius:
-                              const BorderRadius.all(Radius.circular(90.0)),
-                          borderSide: const BorderSide(
-                            color: const Color(0xFF000000),
+                               BorderRadius.all(Radius.circular(90.0)),
+                          borderSide:  BorderSide(
+                            color:  Color(0xFF000000),
                             width: 1.5,
                             style: BorderStyle.solid,
                           ),
                         ),
                         errorBorder: OutlineInputBorder(
                           borderRadius:
-                              const BorderRadius.all(Radius.circular(90.0)),
-                          borderSide: const BorderSide(
+                               BorderRadius.all(Radius.circular(90.0)),
+                          borderSide:  BorderSide(
                             color: Color.fromARGB(255, 153, 0, 0),
                             width: 1.5,
                             style: BorderStyle.solid,
@@ -118,8 +124,8 @@ class _RegisterPage extends State<RegisterPage> {
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius:
-                              const BorderRadius.all(Radius.circular(90.0)),
-                          borderSide: const BorderSide(
+                               BorderRadius.all(Radius.circular(90.0)),
+                          borderSide:  BorderSide(
                             color: Color.fromARGB(255, 0, 0, 0),
                             width: 1.5,
                             style: BorderStyle.solid,
@@ -131,7 +137,7 @@ class _RegisterPage extends State<RegisterPage> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 20),
+                    margin:const EdgeInsets.symmetric(vertical: 20),
                     width: MediaQuery.of(context).size.height * 0.5,
                     child: TextFormField(
                       obscureText: true,
@@ -177,15 +183,15 @@ class _RegisterPage extends State<RegisterPage> {
                   ),
                   Container(
                     width: MediaQuery.of(context).size.height * 0.5,
-                    margin: EdgeInsets.only(top: 140),
+                    margin:const EdgeInsets.only(top: 140),
                     child: ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
-                              Color.fromRGBO(255, 255, 255, 1)),
+                              const Color.fromRGBO(255, 255, 255, 1)),
                           minimumSize: MaterialStateProperty.all(Size(
                               MediaQuery.of(context).size.width * 0.7, 58)),
                           shadowColor: MaterialStateProperty.all(
-                              Color.fromRGBO(1, 1, 1, 1)),
+                              const Color.fromRGBO(1, 1, 1, 1)),
                           shape:
                               MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(24),
@@ -223,9 +229,7 @@ class _RegisterPage extends State<RegisterPage> {
 
   void _validator() {
     if (_formKey.currentState!.validate()) {
-      print('name = ${name.text} ; email = ${email.text} ; password = ${password.text}');
       loadData(name.text, email.text, password.text);
-      Navigator.pushNamed(context, '/login_page');
     }
   }
 
@@ -261,7 +265,6 @@ class _RegisterPage extends State<RegisterPage> {
   }
 
   Future<http.Response> Register(name, email, password) {
-    print('name = ${name} ; email = ${email} ; password = ${password}');
     return http
         .post(Uri.parse('http://didpisdp.beget.tech/api/register'), body: {
       "email": email,
@@ -276,9 +279,11 @@ class _RegisterPage extends State<RegisterPage> {
     Register(email, name, password)
         .then((response) => {
               if (response.statusCode == 200)
-                print(response.body)
+                Navigator.pushNamed(context, '/login_page')
               else
-                {print(response.statusCode)}
+                {
+                  error = '$response'
+                }
             })
         .catchError((error) {
       debugPrint(error.toString());

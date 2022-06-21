@@ -1,6 +1,5 @@
 import 'package:diplomka/Request/UserConvertJSON.dart';
 import 'package:flutter/material.dart';
-import '../global.dart' as global;
 
 class UserPage extends StatefulWidget {
   _UserPage createState() => _UserPage();
@@ -57,8 +56,6 @@ class _UserPage extends State<UserPage> {
                 child: FutureBuilder<User>(
                   future: user,
                   builder: (context, snapshot) {
-                    print(global.user_id);
-                    print(snapshot.hasData);
                     if (snapshot.hasData) {
                       return ListView(
                         children: [
@@ -163,7 +160,7 @@ class _UserPage extends State<UserPage> {
                                 TableRow(
                                   children: <Widget>[
                                     Container(
-                                      child: Text(
+                                      child:const Text(
                                         'Одобрено',
                                         textAlign: TextAlign.start,
                                         style: TextStyle(
@@ -179,7 +176,7 @@ class _UserPage extends State<UserPage> {
                                       child: Text(
                                         '${snapshot.data!.approved}',
                                         textAlign: TextAlign.start,
-                                        style: TextStyle(
+                                        style:const TextStyle(
                                           fontSize: 20,
                                           color: Color.fromRGBO(32, 86, 146, 1),
                                         ),
@@ -198,14 +195,14 @@ class _UserPage extends State<UserPage> {
                             child: ElevatedButton(
                                 style: ButtonStyle(
                                   overlayColor: MaterialStateProperty.all(
-                                      Color.fromRGBO(0, 0, 0, 1)),
+                                      const Color.fromRGBO(0, 0, 0, 1)),
                                   backgroundColor: MaterialStateProperty.all(
-                                      Color.fromRGBO(255, 255, 255, 1)),
+                                      const Color.fromRGBO(255, 255, 255, 1)),
                                   minimumSize: MaterialStateProperty.all(Size(
                                       MediaQuery.of(context).size.width * 0.7,
                                       58)),
                                   shadowColor: MaterialStateProperty.all(
-                                      Color.fromRGBO(1, 1, 1, 1)),
+                                      const Color.fromRGBO(1, 1, 1, 1)),
                                   shape: MaterialStateProperty.all(
                                       RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(24),

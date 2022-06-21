@@ -38,12 +38,12 @@ class _LoginPage extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                    margin: EdgeInsets.symmetric(vertical: 20),
+                    margin:const EdgeInsets.symmetric(vertical: 20),
                     width: MediaQuery.of(context).size.height * 0.5,
                     child: TextFormField(
                       validator: (value) => _validatorEmail(value),
                       controller: email,
-                      decoration: InputDecoration(
+                      decoration:const InputDecoration(
                         focusedErrorBorder:  OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(90.0)),
                           borderSide: BorderSide(
@@ -54,17 +54,17 @@ class _LoginPage extends State<LoginPage> {
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius:
-                              const BorderRadius.all(Radius.circular(90.0)),
-                          borderSide: const BorderSide(
-                            color: const Color(0xFF000000),
+                               BorderRadius.all(Radius.circular(90.0)),
+                          borderSide:  BorderSide(
+                            color:  Color(0xFF000000),
                             width: 1.5,
                             style: BorderStyle.solid,
                           ),
                         ),
                         errorBorder: OutlineInputBorder(
                           borderRadius:
-                              const BorderRadius.all(Radius.circular(90.0)),
-                          borderSide: const BorderSide(
+                               BorderRadius.all(Radius.circular(90.0)),
+                          borderSide:  BorderSide(
                             color: Color.fromARGB(255, 153, 0, 0),
                             width: 1.5,
                             style: BorderStyle.solid,
@@ -72,8 +72,8 @@ class _LoginPage extends State<LoginPage> {
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius:
-                              const BorderRadius.all(Radius.circular(90.0)),
-                          borderSide: const BorderSide(
+                               BorderRadius.all(Radius.circular(90.0)),
+                          borderSide:  BorderSide(
                             color: Color.fromARGB(255, 0, 0, 0),
                             width: 1.5,
                             style: BorderStyle.solid,
@@ -85,7 +85,7 @@ class _LoginPage extends State<LoginPage> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 20),
+                    margin:const EdgeInsets.symmetric(vertical: 20),
                     width: MediaQuery.of(context).size.height * 0.5,
                     child: TextFormField(
                       obscureText: true,
@@ -136,14 +136,14 @@ class _LoginPage extends State<LoginPage> {
 
             Container(
               width: MediaQuery.of(context).size.width * 0.7,
-              margin: EdgeInsets.only(top: 140),
+              margin:const EdgeInsets.only(top: 140),
               child: ElevatedButton(
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Color.fromRGBO(255, 255, 255, 1)),
                     minimumSize: MaterialStateProperty.all(
                         Size(MediaQuery.of(context).size.width * 0.7, 58)
                     ),
-                    shadowColor: MaterialStateProperty.all(Color.fromRGBO(1, 1, 1, 1)),
+                    shadowColor: MaterialStateProperty.all(const Color.fromRGBO(1, 1, 1, 1)),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(24),
                       // side: BorderSide(color: Colors.red),
@@ -207,7 +207,6 @@ class _LoginPage extends State<LoginPage> {
         },
         headers: {'Accept':'application/json'}
     );
-    print(response.body);
     if (response.statusCode == 200) {
       user = Auth.fromJson(json.decode(response.body));
       global.email = email;
@@ -215,7 +214,6 @@ class _LoginPage extends State<LoginPage> {
       global.token = user.token;
       global.user_id = user.user_id;
       global.type = user.type;
-      print(global.token);
       Navigator.pushNamed(context, '/menu_page');
       return user;
     } else {

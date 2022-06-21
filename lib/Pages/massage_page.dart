@@ -1,9 +1,5 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import '../Request/AuthConvertJSON.dart';
 import '../Request/MessageConvertJSON.dart';
-import '../Request/ProjectsConvertJSON.dart';
 import '../global.dart' as global;
 import 'package:http/http.dart' as http;
 
@@ -29,7 +25,7 @@ class _MassagetPage extends State<MassagetPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.only(top: 30),
+        padding: const EdgeInsets.only(top: 30),
         child: Column(
           children: [
             Expanded(
@@ -78,13 +74,13 @@ class _MassagetPage extends State<MassagetPage> {
                                     snapshot.data?.discussion[index].user_id)
                                   return Container(
                                     alignment: Alignment.bottomLeft,
-                                    margin: EdgeInsets.only(bottom: 20),
-                                    padding: EdgeInsets.only(
+                                    margin: const EdgeInsets.only(bottom: 20),
+                                    padding: const EdgeInsets.only(
                                         bottom: 20,
                                         top: 10,
                                         left: 15,
                                         right: 15),
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       color: Color.fromRGBO(238, 240, 242, 1),
                                       borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(5),
@@ -100,8 +96,8 @@ class _MassagetPage extends State<MassagetPage> {
                                         Container(
                                           alignment: Alignment.bottomLeft,
                                           child: Text(
-                                            '${snapshot.data?.discussion[index].user_id}',
-                                            style: TextStyle(
+                                            '${snapshot.data?.discussion[index].user_name}',
+                                            style:const TextStyle(
                                               fontSize: 14,
                                               color: Color.fromRGBO(
                                                   161, 161, 161, 1),
@@ -109,14 +105,14 @@ class _MassagetPage extends State<MassagetPage> {
                                             textAlign: TextAlign.left,
                                           ),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 5,
                                         ),
                                         Container(
                                           alignment: Alignment.bottomLeft,
                                           child: Text(
                                             '${snapshot.data?.discussion[index].message}',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 18,
                                               color: Colors.black,
                                             ),
@@ -129,13 +125,13 @@ class _MassagetPage extends State<MassagetPage> {
                                 else
                                   return Container(
                                     alignment: Alignment.bottomRight,
-                                    margin: EdgeInsets.only(bottom: 20),
-                                    padding: EdgeInsets.only(
+                                    margin:const EdgeInsets.only(bottom: 20),
+                                    padding:const EdgeInsets.only(
                                         bottom: 20,
                                         top: 10,
                                         left: 15,
                                         right: 15),
-                                    decoration: BoxDecoration(
+                                    decoration:const BoxDecoration(
                                       color: Color.fromRGBO(32, 86, 146, 1),
                                       borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(20),
@@ -150,16 +146,16 @@ class _MassagetPage extends State<MassagetPage> {
                                         Container(
                                           alignment: Alignment.bottomRight,
                                           child: Text(
-                                            '${snapshot.data?.discussion[index].user_id}',
-                                            style: TextStyle(
+                                            '${snapshot.data?.discussion[index].user_name}',
+                                            style:const TextStyle(
                                               fontSize: 14,
                                               color: Color.fromRGBO(
                                                   161, 161, 161, 1),
-                                            ),
+                                            ) ,
                                             textAlign: TextAlign.left,
                                           ),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 5,
                                         ),
                                         Container(
@@ -179,7 +175,6 @@ class _MassagetPage extends State<MassagetPage> {
                               },
                             );
                           } else if (snapshot.hasError) {
-                            print(snapshot);
                             return Text('${snapshot}');
                           }
                           return Text('Empty');
@@ -187,55 +182,60 @@ class _MassagetPage extends State<MassagetPage> {
                       ),
                     ),
                     Container(
-                    margin: EdgeInsets.symmetric(vertical: 20),
-                    width: MediaQuery.of(context).size.height * 0.5,
-                    child: TextFormField(
-                      controller: _message,
-                      focusNode: _weightFocus,
-                      textInputAction: TextInputAction.done,
-                      onFieldSubmitted: (_message) {
-                        _weightFocus.unfocus();
-                        createMessage(_message);
-                      },
-                      maxLength: 100,
-                      decoration: const InputDecoration(
-                        hintText: "Ваше сообщение",
-                        focusedErrorBorder:  OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(90.0)),
-                          borderSide: BorderSide(
-                            color: Color.fromARGB(255, 153, 0, 0),
-                            width: 1.5,
-                            style: BorderStyle.solid,
+                      margin: EdgeInsets.symmetric(vertical: 20),
+                      width: MediaQuery.of(context).size.height * 0.5,
+                      child: TextFormField(
+                        controller: _message,
+                        focusNode: _weightFocus,
+                        textInputAction: TextInputAction.done,
+                        onFieldSubmitted: (_message) {
+                          _weightFocus.unfocus();
+                          createMessage(_message);
+                          this._message.text = '';
+                          Navigator.pushNamed(context,'/detail_project_page');
+                        },
+                        maxLength: 100,
+                        decoration: const InputDecoration(
+                          hintText: "Ваше сообщение",
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(90.0)),
+                            borderSide: BorderSide(
+                              color: Color.fromARGB(255, 153, 0, 0),
+                              width: 1.5,
+                              style: BorderStyle.solid,
+                            ),
                           ),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(90.0)),
-                          borderSide: BorderSide(
-                            color:Color(0xFF000000),
-                            width: 1.5,
-                            style: BorderStyle.solid,
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(90.0)),
+                            borderSide: BorderSide(
+                              color: Color(0xFF000000),
+                              width: 1.5,
+                              style: BorderStyle.solid,
+                            ),
                           ),
-                        ),
-                        errorBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(90.0)),
-                          borderSide: BorderSide(
-                            color: Color.fromARGB(255, 153, 0, 0),
-                            width: 1.5,
-                            style: BorderStyle.solid,
+                          errorBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(90.0)),
+                            borderSide: BorderSide(
+                              color: Color.fromARGB(255, 153, 0, 0),
+                              width: 1.5,
+                              style: BorderStyle.solid,
+                            ),
                           ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(90.0)),
-                          borderSide: BorderSide(
-                            color: Color.fromARGB(255, 0, 0, 0),
-                            width: 1.5,
-                            style: BorderStyle.solid,
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(90.0)),
+                            borderSide: BorderSide(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              width: 1.5,
+                              style: BorderStyle.solid,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
                   ],
                 ),
               ),
@@ -255,17 +255,8 @@ class _MassagetPage extends State<MassagetPage> {
           "discussion_id": "${global.discussion_id}"
         },
         headers: {
-          'Accept':'application/json',
+          'Accept': 'application/json',
           'Authorization': 'Bearer ${global.token}',
-        }
-    );
-    
-    if (response.statusCode == 200) {
-      print('200');
-    } else {
-      print('error');
-    }
+        });
   }
 }
-
-

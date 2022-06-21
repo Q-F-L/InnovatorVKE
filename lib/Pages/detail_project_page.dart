@@ -1,4 +1,3 @@
-import 'package:diplomka/Request/UserConvertJSON.dart';
 import 'package:diplomka/Request/ProjectsConvertJSON.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -22,7 +21,7 @@ class _DetailProjectPage extends State<DetailProjectPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.only(top: 30),
+        padding: const EdgeInsets.only(top: 30),
         child: Column(
           children: [
             Expanded(
@@ -34,11 +33,11 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                     flex: 1,
                     child: GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, '/menu_page');
+                          Navigator.pushNamed(context, '/list_project_page');
                         },
                         child: Image.asset('assets/arrow_back.png')),
                   ),
-                  Expanded(
+                  const Expanded(
                     flex: 4,
                     child: Text(
                       'Заявка',
@@ -64,7 +63,14 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                   children: [
                     Column(
                       children: [
-                        Text(
+                        global.status == 'accepted' ? 
+                        Text('Одобренно', style: TextStyle(
+                          color: Colors.green, fontSize: 20, fontWeight: FontWeight.bold)) : 
+                        Text(''),
+                          SizedBox(
+                            height: 10,
+                          ),
+                        const Text(
                           'Сейчас так:',
                           style: TextStyle(
                               fontSize: 20,
@@ -72,21 +78,21 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                               fontWeight: FontWeight.w400),
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         Text(
                           '${global.now_description}',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 20,
                               color: Color.fromRGBO(32, 86, 146, 1),
                               fontWeight: FontWeight.w400),
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 25,
                         ),
-                        Text(
+                        const Text(
                           'Надо так:',
                           style: TextStyle(
                               fontSize: 20,
@@ -94,21 +100,21 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                               fontWeight: FontWeight.w400),
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         Text(
                           '${global.need_description}',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 20,
                               color: Color.fromRGBO(32, 86, 146, 1),
                               fontWeight: FontWeight.w400),
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 25,
                         ),
-                        Text(
+                        const Text(
                           'И тогда будет так:',
                           style: TextStyle(
                               fontSize: 20,
@@ -116,31 +122,31 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                               fontWeight: FontWeight.w400),
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         Text(
                           '${global.will_description}',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 20,
-                              color: Color.fromRGBO(32, 86, 146, 1),
+                              color:  Color.fromRGBO(32, 86, 146, 1),
                               fontWeight: FontWeight.w400),
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 25,
                         ),
                         Container(
-                          margin: EdgeInsets.only(
+                          margin: const EdgeInsets.only(
                             left: 10,
                           ),
-                          child: Text(
+                          child: const Text(
                             'Оцените проект:',
                             textAlign: TextAlign.start,
                             style: TextStyle(fontSize: 20),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Row(
@@ -156,12 +162,12 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                                     });
                                   },
                                   icon: (_rating >= 1
-                                      ? Icon(
+                                      ? const Icon(
                                           Icons.star,
                                           size: 45,
                                           color: Colors.yellow,
                                         )
-                                      : Icon(
+                                      : const Icon(
                                           Icons.star_border,
                                           size: 45,
                                           color:
@@ -177,12 +183,12 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                                     });
                                   },
                                   icon: (_rating >= 2
-                                      ? Icon(
+                                      ? const Icon(
                                           Icons.star,
                                           size: 45,
                                           color: Colors.yellow,
                                         )
-                                      : Icon(
+                                      : const Icon(
                                           Icons.star_border,
                                           size: 45,
                                           color:
@@ -198,12 +204,12 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                                     });
                                   },
                                   icon: (_rating >= 3
-                                      ? Icon(
+                                      ? const Icon(
                                           Icons.star,
                                           size: 45,
                                           color: Colors.yellow,
                                         )
-                                      : Icon(
+                                      : const Icon(
                                           Icons.star_border,
                                           size: 45,
                                           color:
@@ -219,12 +225,12 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                                     });
                                   },
                                   icon: (_rating >= 4
-                                      ? Icon(
+                                      ? const Icon(
                                           Icons.star,
                                           size: 45,
                                           color: Colors.yellow,
                                         )
-                                      : Icon(
+                                      : const Icon(
                                           Icons.star_border,
                                           size: 45,
                                           color:
@@ -240,12 +246,12 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                                     });
                                   },
                                   icon: (_rating >= 5
-                                      ? Icon(
+                                      ? const Icon(
                                           Icons.star,
                                           size: 45,
                                           color: Colors.yellow,
                                         )
-                                      : Icon(
+                                      : const Icon(
                                           Icons.star_border,
                                           size: 45,
                                           color:
@@ -255,24 +261,24 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                             Expanded(child: Container()),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width * 0.7,
                           margin:
-                              EdgeInsets.only(bottom: 10, left: 10, right: 10),
+                              const EdgeInsets.only(bottom: 10, left: 10, right: 10),
                           child: ElevatedButton(
                               style: ButtonStyle(
                                 overlayColor: MaterialStateProperty.all(
-                                    Color.fromRGBO(0, 0, 0, 1)),
+                                    const Color.fromRGBO(0, 0, 0, 1)),
                                 backgroundColor: MaterialStateProperty.all(
-                                    Color.fromRGBO(255, 255, 255, 1)),
+                                    const Color.fromRGBO(255, 255, 255, 1)),
                                 minimumSize: MaterialStateProperty.all(Size(
                                     MediaQuery.of(context).size.width * 0.7,
                                     58)),
                                 shadowColor: MaterialStateProperty.all(
-                                    Color.fromRGBO(1, 1, 1, 1)),
+                                    const Color.fromRGBO(1, 1, 1, 1)),
                                 shape: MaterialStateProperty.all(
                                     RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(24),
@@ -291,21 +297,21 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                                 textAlign: TextAlign.center,
                               )),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         global.type == 'admin'
                             ? Container(
                                 width: MediaQuery.of(context).size.width * 0.7,
-                                margin: EdgeInsets.only(
+                                margin: const EdgeInsets.only(
                                     bottom: 10, left: 10, right: 10),
                                 child: ElevatedButton(
                                     style: ButtonStyle(
                                       overlayColor: MaterialStateProperty.all(
-                                          Color.fromRGBO(0, 0, 0, 1)),
+                                          const Color.fromRGBO(0, 0, 0, 1)),
                                       backgroundColor:
                                           MaterialStateProperty.all(
-                                              Color.fromRGBO(255, 255, 255, 1)),
+                                              const Color.fromRGBO(255, 255, 255, 1)),
                                       minimumSize: MaterialStateProperty.all(
                                           Size(
                                               MediaQuery.of(context)
@@ -314,7 +320,7 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                                                   0.7,
                                               58)),
                                       shadowColor: MaterialStateProperty.all(
-                                          Color.fromRGBO(1, 1, 1, 1)),
+                                          const Color.fromRGBO(1, 1, 1, 1)),
                                       shape: MaterialStateProperty.all(
                                           RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(24),
@@ -327,7 +333,7 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                                       deleteProject();
                                       Navigator.pop;
                                     },
-                                    child: Text(
+                                    child: const Text(
                                       'Удалить',
                                       style: TextStyle(
                                           color:
@@ -340,15 +346,15 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                         global.type == 'admin'
                             ? Container(
                                 width: MediaQuery.of(context).size.width * 0.7,
-                                margin: EdgeInsets.only(
+                                margin: const EdgeInsets.only(
                                     bottom: 10, left: 10, right: 10),
                                 child: ElevatedButton(
                                     style: ButtonStyle(
                                       overlayColor: MaterialStateProperty.all(
-                                          Color.fromRGBO(0, 0, 0, 1)),
+                                          const Color.fromRGBO(0, 0, 0, 1)),
                                       backgroundColor:
                                           MaterialStateProperty.all(
-                                              Color.fromRGBO(255, 255, 255, 1)),
+                                              const Color.fromRGBO(255, 255, 255, 1)),
                                       minimumSize: MaterialStateProperty.all(
                                           Size(
                                               MediaQuery.of(context)
@@ -357,7 +363,7 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                                                   0.7,
                                               58)),
                                       shadowColor: MaterialStateProperty.all(
-                                          Color.fromRGBO(1, 1, 1, 1)),
+                                          const Color.fromRGBO(1, 1, 1, 1)),
                                       shape: MaterialStateProperty.all(
                                           RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(24),
@@ -370,7 +376,7 @@ class _DetailProjectPage extends State<DetailProjectPage> {
                                       acceptedProject();
                                       Navigator.pushNamed(context, '/list_project_page');
                                     },
-                                    child: Text(
+                                    child: const Text(
                                       'Одобрить',
                                       style: TextStyle(
                                           color:
@@ -400,7 +406,6 @@ class _DetailProjectPage extends State<DetailProjectPage> {
           'Accept': 'application/json',
           'Authorization': 'Bearer ${global.token}',
         });
-    print(response.body);
     final uploadRatingCalc = await http.get(
         Uri.parse('http://didpisdp.beget.tech/api/rating_calc/${global.id}'),
         headers: {
@@ -408,7 +413,6 @@ class _DetailProjectPage extends State<DetailProjectPage> {
           'Authorization': 'Bearer ${global.token}',
         });
     if (response.statusCode == 200) {
-      print(response.body);
     } else {
       throw Exception('Error: ${response.reasonPhrase}');
     }

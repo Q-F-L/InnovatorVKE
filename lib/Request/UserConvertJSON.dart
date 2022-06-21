@@ -37,8 +37,6 @@ Future<User> getUser(int user_id) async {
   );
   
   if (response.statusCode == 200) {
-    print(global.token);
-    print(response);
     return User.fromJson(json.decode(response.body));
   } else {
     throw Exception('Error: ${response.reasonPhrase}');
